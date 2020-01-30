@@ -8,7 +8,7 @@ import sys
 #this can be changed to compile different sources
 base_source_directory='source/'
 base_bin_directory='demo/bin/'
-library_name='libgdexample'
+library_name='libggj20'
 ####
 
 

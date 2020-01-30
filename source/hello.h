@@ -23,7 +23,7 @@ namespace test
 		void _process(float delta);
 
 	private:
-		bool done;
+		bool done{false};
 	};
 }
 

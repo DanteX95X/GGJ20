@@ -11,9 +11,9 @@ namespace test
 		GODOT_CLASS(MoveAround, godot::Node2D)
 
 	private:
-		float timePassed;
-		float amplitude;
-		float speed;
+			float timePassed{0};
+		float amplitude{10};
+		float speed{1};
 
 	public:
 		static void _register_methods();
