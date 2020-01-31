@@ -1,4 +1,8 @@
 #include "player_controller.h"
+#include <ResourceLoader.hpp>
+#include <Input.hpp>
+#include <Viewport.hpp>
+#include <Area2D.hpp>
 
 namespace godot
 {
@@ -18,6 +22,8 @@ namespace godot
 
 	void PlayerController::_init()
 	{
+		Ref<Resource> resource = ResourceLoader::get_singleton()->load("res://scenes/actors/nail.tscn");
+		nail = resource;
 	}
 
 	void PlayerController::_ready()
@@ -26,5 +32,14 @@ namespace godot
 
 	void PlayerController::_process(float delta)
 	{
+		Vector2 mousePosition = this->get_local_mouse_position();
+
+		if(Input::get_singleton()->is_action_just_released("place_nail"))
+		{
+			Node* instance = nail->instance();
+			Node2D* node = static_cast<Node2D*>(instance);
+			node->set_position(mousePosition);
+			add_child(node);
+		}
 	}
 }
