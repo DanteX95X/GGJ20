@@ -27,6 +27,8 @@ namespace godot
 		Ref<PackedScene> nail{};
 
 		int remainingNails{10};
+		bool exploded{false};
+		float timeAfterExplosion{0.0f};
 		bool placingStarted{false};
 
 		void Explode();

@@ -1,5 +1,6 @@
 #include "player_controller.h"
 #include "Input.hpp"
+#include "block.h"
 #include <ResourceLoader.hpp>
 #include <Input.hpp>
 #include <Viewport.hpp>
@@ -67,17 +68,16 @@ namespace godot
 	void PlayerController::Explode()
 	{
 		godot::Godot::print("Explosion!");
-		auto children = this->get_children();
+		auto children = this->get_node("BlockParent")->get_children();
+		auto background_position = static_cast<Node2D*>(this->get_node("backgroundRB"))->get_position();
 
-//		for (auto x : children)
-//		{
-//			godot::Godot::print("child: {0}", 10);
-
-//		}
-
-		for (int i =0 ; i < children.size(); i++)
+		for (int i = 0; i < children.size(); i++)
 		{
-
+			Block* block = static_cast<Block*>(children[i]);
+			if(block != nullptr)
+			{
+				block->ExplosionImpact(background_position);
+			}
 		}
 	}
 }

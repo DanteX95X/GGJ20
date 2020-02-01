@@ -26,8 +26,13 @@ namespace godot
 		void DisableDrag();
 
 		void OnInputEvent(const Node* camera, const Ref<InputEvent> event, Vector3 click_position, Vector3 click_normal, int shape_idx);
+		void ExplosionImpact(Vector2 center);
 
 	private:
+		bool isStaticBlock{false};
+		bool exploded{false};
+		float timeAfterExplosion{0.0f};
+
 		Vector2 lastMousePosition{};
 		bool dragging = false;
 	};
