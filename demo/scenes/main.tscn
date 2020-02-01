@@ -4,13 +4,22 @@
 [ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
-position = Vector2( 490, 319 )
 script = ExtResource( 1 )
 
-[node name="Block" parent="." instance=ExtResource( 2 )]
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Block2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 161, 0 )
+[node name="Block" parent="Control" instance=ExtResource( 2 )]
+position = Vector2( 1638.31, 957.859 )
 
-[node name="Block3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, -128 )
+[node name="Block2" parent="Control" instance=ExtResource( 2 )]
+position = Vector2( 1799.31, 957.859 )
+
+[node name="Block3" parent="Control" instance=ExtResource( 2 )]
+position = Vector2( 1718.31, 829.859 )
