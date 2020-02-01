@@ -38,7 +38,14 @@ namespace godot
 		Vector2 mousePosition = this->get_local_mouse_position();
 
 		auto input = Input::get_singleton();
-		if(input->is_action_just_released("place_nail") && this->remainingNails > 0)
+
+		if(!this->placingStarted && input->is_action_just_released("start_level"))
+		{
+			this->placingStarted = true;
+			this->Explode();
+		}
+
+		if(this->placingStarted && input->is_action_just_released("place_nail") && this->remainingNails > 0)
 		{
 			this->remainingNails -= 1;
 			godot::Godot::print("Nails reminding: {0}", this->remainingNails);
@@ -46,6 +53,23 @@ namespace godot
 			Node2D* node = static_cast<Node2D*>(instance);
 			node->set_position(mousePosition);
 			add_child(node);
+		}
+	}
+
+	void PlayerController::Explode()
+	{
+		godot::Godot::print("Explosion!");
+		auto children = this->get_children();
+
+//		for (auto x : children)
+//		{
+//			godot::Godot::print("child: {0}", 10);
+
+//		}
+
+		for (int i =0 ; i < children.size(); i++)
+		{
+
 		}
 	}
 }

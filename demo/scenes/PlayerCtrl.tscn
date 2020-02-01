@@ -45,5 +45,8 @@ rotation = 1.58169
 position = Vector2( 504.3, 270.045 )
 gravity_scale = 1.0
 
-[node name="Block" parent="staticBlock" instance=ExtResource( 5 )]
-position = Vector2( 181.546, -89.5193 )
+[node name="Block" parent="." instance=ExtResource( 5 )]
+position = Vector2( 685.846, 180.525 )
+
+[node name="Block2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 514.061, 117.128 )
