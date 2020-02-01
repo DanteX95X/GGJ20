@@ -4,6 +4,8 @@
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <Area2D.hpp>
+#include <RigidBody2D.hpp>
+#include <PackedScene.hpp>
 
 namespace godot
 {
@@ -21,8 +23,10 @@ namespace godot
 		void _ready();
 		void _process(float delta);
 
-		void OnAreaEntered(Area2D* area);
+		void OnBodyEntered(PhysicsBody2D* area);
 
+	private:
+		RigidBody2D* nailBody{nullptr};
 	};
 }
 

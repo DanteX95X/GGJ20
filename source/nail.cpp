@@ -1,4 +1,7 @@
 #include "nail.h"
+#include <PinJoint2D.hpp>
+#include <RigidBody2D.hpp>
+#include <ResourceLoader.hpp>
 
 namespace godot
 {
@@ -7,7 +10,7 @@ namespace godot
 		godot::register_method("_ready", &Nail::_ready);
 		godot::register_method("_process", &Nail::_process);
 
-		godot::register_method("OnAreaEntered", &Nail::OnAreaEntered);
+		godot::register_method("OnBodyEntered", &Nail::OnBodyEntered);
 	}
 
 	Nail::Nail()
@@ -24,20 +27,19 @@ namespace godot
 
 	void Nail::_ready()
 	{
-		this->connect("area_entered", this, "OnAreaEntered");
+		this->connect("body_entered", this, "OnBodyEntered");
+		nailBody = static_cast<RigidBody2D*>(this->get_node("Body"));
 	}
 
 	void Nail::_process(float delta)
 	{
 	}
 
-	void Nail::OnAreaEntered(Area2D* area)
+	void Nail::OnBodyEntered(PhysicsBody2D* body)
 	{
-		Node* node = area->get_node("Sprite");
-
-		if(node != nullptr)
-		{
-			Godot::print("git");
-		}
+		PinJoint2D* pin = PinJoint2D::_new();
+		this->add_child(pin);
+		pin->set_node_a(body->get_path());
+		pin->set_node_b(nailBody->get_path());
 	}
 }

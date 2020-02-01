@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
+[ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
 position = Vector2( 490, 319 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -213.743, -121.92 )
-texture = ExtResource( 2 )
+[node name="Block" parent="." instance=ExtResource( 2 )]
+
+[node name="Block2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 161, 0 )
+
+[node name="Block3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, -128 )
