@@ -37,25 +37,9 @@ namespace godot
 
 	void Nail::OnBodyEntered(PhysicsBody2D* body)
 	{
-		if(!previouslyEnteredBodies.empty())
-		{
-			for(int i = 0; i < previouslyEnteredBodies.size(); ++i)
-			{
-				PinJoint2D* pin = PinJoint2D::_new();
-				RigidBody2D* previouslyEnteredBody = static_cast<RigidBody2D*>(previouslyEnteredBodies[i]);
-				this->add_child(pin);
-				pin->set_node_a(previouslyEnteredBody->get_path());
-				pin->set_node_b(body->get_path());
-
-				previouslyEnteredBody->set_gravity_scale(5);
-			}
-		}
-
 		PinJoint2D* pin = PinJoint2D::_new();
 		this->add_child(pin);
 		pin->set_node_a(body->get_path());
 		pin->set_node_b(nailBody->get_path());
-
-		previouslyEnteredBodies.append(body);
 	}
 }

@@ -26,7 +26,6 @@ namespace godot
 		void OnBodyEntered(PhysicsBody2D* area);
 
 	private:
-		Array previouslyEnteredBodies{};
 		RigidBody2D* nailBody{nullptr};
 	};
 }
