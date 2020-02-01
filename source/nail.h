@@ -23,9 +23,9 @@ namespace godot
 		void _ready();
 		void _process(float delta);
 
+	private:
 		void OnBodyEntered(PhysicsBody2D* area);
 
-	private:
 		RigidBody2D* nailBody{nullptr};
 	};
 }
