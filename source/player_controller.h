@@ -8,7 +8,7 @@ namespace godot
 {
 	class PlayerController : public godot::Node2D
 	{
-		GODOT_CLASS(PlayerController, godot::Node2D);
+		GODOT_CLASS(PlayerController, godot::Node2D)
 
 	public:
 		static void _register_methods();
@@ -19,6 +19,7 @@ namespace godot
 		void _init();
 		void _ready();
 		void _process(float delta);
+		void _unhandled_input(const Ref<InputEvent> event);
 	};
 }
 
