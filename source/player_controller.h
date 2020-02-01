@@ -22,7 +22,7 @@ namespace godot
 		void _process(float delta);
 
 	private:
-		Ref<PackedScene> nail;
+		Ref<PackedScene> nail{};
 	};
 }
 

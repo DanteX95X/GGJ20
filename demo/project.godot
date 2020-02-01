@@ -27,6 +27,11 @@ place_nail={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Blocks"
+2d_physics/layer_2="Nails"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
