@@ -42,6 +42,7 @@ place_nail={
 
 2d_physics/layer_1="Blocks"
 2d_physics/layer_2="Nails"
+2d_physics/layer_3="Background"
 
 [rendering]
 

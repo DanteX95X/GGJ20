@@ -11,6 +11,8 @@ namespace godot
 	{
 		godot::register_method("_ready", &PlayerController::_ready);
 		godot::register_method("_process", &PlayerController::_process);
+
+		godot::register_property<PlayerController, int>("Nails", &PlayerController::remainingNails, 10);
 	}
 
 	PlayerController::PlayerController()
@@ -36,8 +38,10 @@ namespace godot
 		Vector2 mousePosition = this->get_local_mouse_position();
 
 		auto input = Input::get_singleton();
-		if(input->is_action_just_released("place_nail"))
+		if(input->is_action_just_released("place_nail") && this->remainingNails > 0)
 		{
+			this->remainingNails -= 1;
+			godot::Godot::print("Nails reminding: {0}", this->remainingNails);
 			Node* instance = nail->instance();
 			Node2D* node = static_cast<Node2D*>(instance);
 			node->set_position(mousePosition);
