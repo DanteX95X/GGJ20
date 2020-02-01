@@ -19,6 +19,17 @@ config/name="demo"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+scaling="*res://gdscripts/scaling.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/borderless=true
+window/stretch/mode="2d"
+
 [input]
 
 place_nail={
@@ -31,9 +42,16 @@ start_level={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+drag_block={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [layer_names]
 
+2d_physics/layer_1="Blocks"
+2d_physics/layer_2="Nails"
 2d_physics/layer_3="Background"
 
 [rendering]

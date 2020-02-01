@@ -14,3 +14,7 @@ position = Vector2( 1166.05, 248.96 )
 
 [node name="Block3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1085.05, 120.96 )
+
+[node name="Block4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 879.049, 376.96 )
+rotation = 0.945968

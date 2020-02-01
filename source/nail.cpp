@@ -33,13 +33,19 @@ namespace godot
 
 	void Nail::_process(float delta)
 	{
+		if(didResolveCollision)
+			canResolveCollisions = false;
 	}
 
 	void Nail::OnBodyEntered(PhysicsBody2D* body)
 	{
-		PinJoint2D* pin = PinJoint2D::_new();
-		this->add_child(pin);
-		pin->set_node_a(body->get_path());
-		pin->set_node_b(nailBody->get_path());
+		if(canResolveCollisions)
+		{
+			didResolveCollision = true;
+			PinJoint2D* pin = PinJoint2D::_new();
+			this->add_child(pin);
+			pin->set_node_a(body->get_path());
+			pin->set_node_b(nailBody->get_path());
+		}
 	}
 }
