@@ -10,7 +10,7 @@ namespace godot
 
 		godot::register_method("ButtonPressed", &PlayButton::ButtonPressed);
 
-		godot::register_signal<PlayButton>("play_physics");
+		godot::register_signal<PlayButton>("play_physics", Dictionary());
 		godot::register_property<PlayButton, String>("NextLevelPath", &PlayButton::nextLevelPath, "Pls, ustaw mnie!");
 		godot::register_property<PlayButton, Ref<Texture>>("HoverTexture", &PlayButton::hoverTexture, nullptr);
 		godot::register_property<PlayButton, Ref<Texture>>("NormalTexture", &PlayButton::normalTexture, nullptr);
