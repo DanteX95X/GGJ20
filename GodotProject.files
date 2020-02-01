@@ -1329,3 +1329,5 @@ source/ui/reload_button.h
 source/ui/reload_button.cpp
 source/ui/play_button.h
 source/ui/play_button.cpp
+source/./block_verifier.h
+source/./block_verifier.cpp

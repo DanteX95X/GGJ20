@@ -42,6 +42,8 @@ namespace godot
 
 		if(this->timeAfterExplosion > 1.5)
 		{
+			timeAfterExplosion = 0;
+			exploded = false;
 			this->set_linear_velocity(Vector2(0,0));
 			this->set_applied_force(Vector2(0,0));
 
