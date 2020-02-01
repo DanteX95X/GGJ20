@@ -74,7 +74,6 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-NextLevelPath = "res://scenes/PlayerCtrl.tscn"
 HoverTexture = ExtResource( 15 )
 NormalTexture = ExtResource( 14 )
 PressedTexture = ExtResource( 13 )
