@@ -9,7 +9,7 @@ namespace godot
 {
 	class PlayerController : public godot::Node2D
 	{
-		GODOT_CLASS(PlayerController, godot::Node2D);
+		GODOT_CLASS(PlayerController, godot::Node2D)
 
 	public:
 		static void _register_methods();

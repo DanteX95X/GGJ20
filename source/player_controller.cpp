@@ -1,4 +1,5 @@
 #include "player_controller.h"
+#include "Input.hpp"
 #include <ResourceLoader.hpp>
 #include <Input.hpp>
 #include <Viewport.hpp>
@@ -34,7 +35,8 @@ namespace godot
 	{
 		Vector2 mousePosition = this->get_local_mouse_position();
 
-		if(Input::get_singleton()->is_action_just_released("place_nail"))
+		auto input = Input::get_singleton();
+		if(input->is_action_just_released("place_nail"))
 		{
 			Node* instance = nail->instance();
 			Node2D* node = static_cast<Node2D*>(instance);
