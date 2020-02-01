@@ -3,6 +3,8 @@
 #include <RigidBody2D.hpp>
 #include <ResourceLoader.hpp>
 
+#include "block.h"
+
 namespace godot
 {
 	void Nail::_register_methods()
