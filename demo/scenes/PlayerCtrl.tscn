@@ -20,6 +20,15 @@ position = Vector2( 685.846, 180.525 )
 [node name="Block2" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 514.061, 117.128 )
 
+[node name="Block3" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 624, 117.128 )
+
+[node name="Block4" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 344, 176 )
+
+[node name="Block5" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 416, 104 )
+
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
 [node name="staticBlock" parent="." instance=ExtResource( 5 )]
@@ -34,9 +43,9 @@ bias = 0.9
 softness = 1.0
 
 [node name="ReloadButton" type="Button" parent="."]
-margin_top = 666.315
+margin_top = 648.0
 margin_right = 123.0
-margin_bottom = 718.315
+margin_bottom = 718.0
 icon = ExtResource( 4 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -44,10 +53,10 @@ __meta__ = {
 }
 
 [node name="PlayButton" type="Button" parent="."]
-margin_left = 1158.58
-margin_top = 666.315
-margin_right = 1281.58
-margin_bottom = 736.315
+margin_left = 1160.0
+margin_top = 648.0
+margin_right = 1283.0
+margin_bottom = 718.0
 icon = ExtResource( 4 )
 script = ExtResource( 7 )
 __meta__ = {
