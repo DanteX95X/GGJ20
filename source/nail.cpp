@@ -41,6 +41,9 @@ namespace godot
 
 	void Nail::OnBodyEntered(PhysicsBody2D* body)
 	{
+		if(body == nailBody)
+			return;
+
 		if(canResolveCollisions)
 		{
 			didResolveCollision = true;
@@ -48,6 +51,12 @@ namespace godot
 			this->add_child(pin);
 			pin->set_node_a(body->get_path());
 			pin->set_node_b(nailBody->get_path());
+
+			Block* block = static_cast<Block*>(body);
+			if(block != nullptr)
+			{
+				block->DisableDrag();
+			}
 		}
 	}
 }

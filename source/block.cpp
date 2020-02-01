@@ -39,6 +39,11 @@ namespace godot
 		}
 	}
 
+	void Block::DisableDrag()
+	{
+		this->disconnect("input_event", this, "OnInputEvent");
+	}
+
 	void Block::OnInputEvent(const Node* camera, const Ref<InputEvent> event, Vector3 click_position, Vector3 click_normal, int shape_idx)
 	{
 		if(Input::get_singleton()->is_action_just_pressed("drag_block"))

@@ -23,6 +23,8 @@ namespace godot
 		void _ready();
 		void _process(float delta);
 
+		void DisableDrag();
+
 		void OnInputEvent(const Node* camera, const Ref<InputEvent> event, Vector3 click_position, Vector3 click_normal, int shape_idx);
 
 	private:
