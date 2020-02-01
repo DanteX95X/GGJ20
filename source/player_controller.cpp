@@ -35,6 +35,7 @@ namespace godot
 	{
 		Vector2 mousePosition = this->get_local_mouse_position();
 
+		auto input = Input::get_singleton();
 		if(input->is_action_just_released("place_nail"))
 		{
 			Node* instance = nail->instance();
