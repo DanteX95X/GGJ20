@@ -23,6 +23,8 @@ namespace godot
 
 	private:
 		Ref<PackedScene> nail{};
+
+		int remainingNails{10};
 	};
 }
 
