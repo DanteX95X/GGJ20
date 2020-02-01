@@ -28,6 +28,7 @@ namespace godot
 	void Nail::_ready()
 	{
 		this->connect("body_entered", this, "OnBodyEntered");
+		nailBody = static_cast<RigidBody2D*>(this->get_node("Body"));
 	}
 
 	void Nail::_process(float delta)
@@ -42,13 +43,18 @@ namespace godot
 			{
 				PinJoint2D* pin = PinJoint2D::_new();
 				RigidBody2D* previouslyEnteredBody = static_cast<RigidBody2D*>(previouslyEnteredBodies[i]);
-				previouslyEnteredBody->add_child(pin);
+				this->add_child(pin);
 				pin->set_node_a(previouslyEnteredBody->get_path());
 				pin->set_node_b(body->get_path());
 
-				previouslyEnteredBody->set_gravity_scale(10);
+				previouslyEnteredBody->set_gravity_scale(5);
 			}
 		}
+
+		PinJoint2D* pin = PinJoint2D::_new();
+		this->add_child(pin);
+		pin->set_node_a(body->get_path());
+		pin->set_node_b(nailBody->get_path());
 
 		previouslyEnteredBodies.append(body);
 	}

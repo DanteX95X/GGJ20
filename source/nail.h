@@ -4,7 +4,7 @@
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <Area2D.hpp>
-#include <PhysicsBody2D.hpp>
+#include <RigidBody2D.hpp>
 #include <PackedScene.hpp>
 
 namespace godot
@@ -27,6 +27,7 @@ namespace godot
 
 	private:
 		Array previouslyEnteredBodies{};
+		RigidBody2D* nailBody{nullptr};
 	};
 }
 
