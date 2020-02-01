@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
-[ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/graphics/room.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 17.8044, 16.7812 )
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,37 +17,15 @@ position = Vector2( 685.846, 180.525 )
 [node name="Block2" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 514.061, 117.128 )
 
-[node name="backgroundRB" type="RigidBody2D" parent="."]
-position = Vector2( 511.06, 347.42 )
-collision_layer = 4
-collision_mask = 0
-mode = 1
-
-[node name="Sprite" type="Sprite" parent="backgroundRB"]
-position = Vector2( 17.6227, 0 )
-texture = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="backgroundRB"]
-position = Vector2( -6.76001, -77.375 )
-shape = SubResource( 1 )
-
-[node name="PinJoint2D" type="PinJoint2D" parent="backgroundRB"]
-position = Vector2( -6.76001, -77.375 )
-node_a = NodePath("..")
-node_b = NodePath("../../staticBlock")
-bias = 0.9
-softness = 1.0
-
-[node name="WallNode" parent="." instance=ExtResource( 3 )]
-position = Vector2( 536.235, 621.831 )
-
-[node name="WallNode2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1034.09, 66.7156 )
-rotation = 1.56858
-
-[node name="WallNode3" parent="." instance=ExtResource( 3 )]
-rotation = 1.58169
+[node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
 [node name="staticBlock" parent="." instance=ExtResource( 5 )]
 position = Vector2( 504.3, 270.045 )
 gravity_scale = 1.0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 504.3, 270.045 )
+node_a = NodePath("../staticBlock")
+node_b = NodePath("../backgroundRB")
+bias = 0.9
+softness = 1.0
