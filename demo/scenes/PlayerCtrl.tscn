@@ -53,3 +53,4 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+NextLevelPath = "res://scenes/PlayerCtrl.tscn"

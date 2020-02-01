@@ -1,4 +1,5 @@
 #include "play_button.h"
+#include <SceneTree.hpp>
 
 namespace godot
 {
@@ -7,9 +8,10 @@ namespace godot
 		godot::register_method("_ready", &PlayButton::_ready);
 		godot::register_method("_process", &PlayButton::_process);
 
-		godot::register_method("PlayPhysics", &PlayButton::PlayPhysics);
+		godot::register_method("ButtonPressed", &PlayButton::ButtonPressed);
 
 		godot::register_signal<PlayButton>("play_physics");
+		godot::register_property<PlayButton, String>("NextLevelPath", &PlayButton::nextLevelPath, "Pls, ustaw mnie!");
 	}
 
 	PlayButton::PlayButton()
@@ -26,15 +28,25 @@ namespace godot
 
 	void PlayButton::_ready()
 	{
-		this->connect("pressed", this, "PlayPhysics");
+		this->connect("pressed", this, "ButtonPressed");
 	}
 
 	void PlayButton::_process(float delta)
 	{
 	}
 
-	void PlayButton::PlayPhysics()
+	void PlayButton::ButtonPressed()
 	{
-		emit_signal("play_physics");
+		if(!didPlayPhysics)
+		{
+			emit_signal("play_physics");
+			didPlayPhysics = true;
+		}
+		else
+		{
+			Godot::print("changing scene to next level");
+			get_tree()->change_scene(nextLevelPath);
+
+		}
 	}
 }

@@ -21,7 +21,10 @@ namespace godot
 		void _process(float delta);
 
 	private:
-		void PlayPhysics();
+		void ButtonPressed();
+
+		String nextLevelPath{};
+		bool didPlayPhysics = false;
 	};
 }
 
