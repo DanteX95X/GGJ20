@@ -10,6 +10,9 @@ namespace godot
 		godot::register_method("_ready", &Block::_ready);
 		godot::register_method("_process", &Block::_process);
 		godot::register_method("OnInputEvent", &Block::OnInputEvent);
+		godot::register_method("ExplosionImpact", &Block::ExplosionImpact);
+
+		godot::register_property<Block, bool>("isStaticBlock", &Block::isStaticBlock, false);
 	}
 
 	Block::Block()
@@ -32,6 +35,19 @@ namespace godot
 
 	void Block::_process(float delta)
 	{
+		if(this->exploded)
+		{
+			this->timeAfterExplosion += delta;
+		}
+
+		if(this->timeAfterExplosion > 1.5)
+		{
+			this->set_linear_velocity(Vector2(0,0));
+			this->set_applied_force(Vector2(0,0));
+
+			this->set_mode(RigidBody2D::MODE_STATIC);
+		}
+
 		if (dragging)
 		{
 			Vector2 diff(get_global_mouse_position() - lastMousePosition);
@@ -62,15 +78,31 @@ namespace godot
 
 	void Block::OnInputEvent(const Node* camera, const Ref<InputEvent> event, Vector3 click_position, Vector3 click_normal, int shape_idx)
 	{
-		if(Input::get_singleton()->is_action_just_pressed("drag_block"))
+		if(!this->isStaticBlock)
 		{
-			dragging = true;
+			if(Input::get_singleton()->is_action_just_pressed("drag_block"))
+			{
+				dragging = true;
 
-			lastMousePosition = get_global_mouse_position();
+				lastMousePosition = get_global_mouse_position();
 
+				this->set_z_index(++PlayerController::zOrder);
+
+				Godot::print("Start dragging");
+			}
+		}
+	}
+
+	void Block::ExplosionImpact(Vector2 center)
+	{
+		godot::Godot::print("Explosionimpact!");
+		if(!isStaticBlock){
+			this->set_mode(RigidBody2D::MODE_RIGID);
+			Vector2 diff = center - this->get_global_position();
+			diff.normalize();
+			this->apply_central_impulse(diff * -1000);
+			this->exploded = true;
 			this->set_z_index(++PlayerController::zOrder);
-
-			Godot::print("Start dragging");
 		}
 	}
 }

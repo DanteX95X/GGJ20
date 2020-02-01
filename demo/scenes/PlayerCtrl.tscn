@@ -42,6 +42,7 @@ position = Vector2( 416, 104 )
 [node name="staticBlock" parent="." instance=ExtResource( 5 )]
 position = Vector2( 504.3, 270.045 )
 gravity_scale = 1.0
+isStaticBlock = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 position = Vector2( 504.3, 270.045 )
