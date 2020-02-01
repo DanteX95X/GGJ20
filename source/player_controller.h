@@ -3,6 +3,7 @@
 
 #include <Godot.hpp>
 #include <Node2D.hpp>
+#include <PackedScene.hpp>
 
 namespace godot
 {
@@ -19,7 +20,9 @@ namespace godot
 		void _init();
 		void _ready();
 		void _process(float delta);
-		void _unhandled_input(const Ref<InputEvent> event);
+
+	private:
+		Ref<PackedScene> nail;
 	};
 }
 
