@@ -3,12 +3,14 @@
 
 #include <Godot.hpp>
 #include <Node2D.hpp>
+#include <TextureButton.hpp>
+#include <Texture.hpp>
 
 namespace godot
 {
-	class PlayButton : public godot::Node2D
+	class PlayButton : public godot::TextureButton
 	{
-		GODOT_CLASS(PlayButton, godot::Node2D)
+		GODOT_CLASS(PlayButton, godot::TextureButton)
 
 	public:
 		static void _register_methods();
@@ -25,6 +27,10 @@ namespace godot
 
 		String nextLevelPath{};
 		bool didPlayPhysics = false;
+
+		Ref<Texture> normalTexture{};
+		Ref<Texture> hoverTexture{};
+		Ref<Texture> pressedTexture{};
 	};
 }
 

@@ -12,6 +12,9 @@ namespace godot
 
 		godot::register_signal<PlayButton>("play_physics");
 		godot::register_property<PlayButton, String>("NextLevelPath", &PlayButton::nextLevelPath, "Pls, ustaw mnie!");
+		godot::register_property<PlayButton, Ref<Texture>>("HoverTexture", &PlayButton::hoverTexture, nullptr);
+		godot::register_property<PlayButton, Ref<Texture>>("NormalTexture", &PlayButton::normalTexture, nullptr);
+		godot::register_property<PlayButton, Ref<Texture>>("PressedTexture", &PlayButton::pressedTexture, nullptr);
 	}
 
 	PlayButton::PlayButton()
@@ -41,6 +44,9 @@ namespace godot
 		{
 			emit_signal("play_physics");
 			didPlayPhysics = true;
+			this->set_hover_texture(hoverTexture);
+			this->set_normal_texture(normalTexture);
+			this->set_pressed_texture(pressedTexture);
 		}
 		else
 		{

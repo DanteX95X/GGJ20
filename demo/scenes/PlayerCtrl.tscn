@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://assets/graphics/reload_button_pressed.png" type="Texture" id=10]
 [ext_resource path="res://assets/graphics/play_button_hover.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/play_button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -55,6 +58,9 @@ texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 9 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayButton" type="TextureButton" parent="."]
 margin_left = 1152.0
@@ -65,4 +71,10 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 NextLevelPath = "res://scenes/PlayerCtrl.tscn"
+HoverTexture = ExtResource( 15 )
+NormalTexture = ExtResource( 14 )
+PressedTexture = ExtResource( 13 )
