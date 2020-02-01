@@ -1,6 +1,7 @@
 #include "block.h"
 
 #include <Input.hpp>
+#include "player_controller.h"
 
 namespace godot
 {
@@ -51,6 +52,8 @@ namespace godot
 			dragging = true;
 
 			lastMousePosition = get_global_mouse_position();
+
+			this->set_z_index(++PlayerController::zOrder);
 
 			Godot::print("Start dragging");
 		}

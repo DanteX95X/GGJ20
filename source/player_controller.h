@@ -21,6 +21,8 @@ namespace godot
 		void _ready();
 		void _process(float delta);
 
+		inline static int64_t zOrder = 0;
+
 	private:
 		Ref<PackedScene> nail{};
 

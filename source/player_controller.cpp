@@ -51,6 +51,7 @@ namespace godot
 			godot::Godot::print("Nails reminding: {0}", this->remainingNails);
 			Node* instance = nail->instance();
 			Node2D* node = static_cast<Node2D*>(instance);
+			node->set_z_index(++PlayerController::zOrder);
 			node->set_position(mousePosition);
 			add_child(node);
 		}
