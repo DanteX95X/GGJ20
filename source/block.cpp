@@ -37,6 +37,12 @@ namespace godot
 			Vector2 diff(get_global_mouse_position() - lastMousePosition);
 			this->set_global_position(get_global_position() + diff);
 			lastMousePosition = get_global_mouse_position();
+
+			if(Input::get_singleton()->is_action_just_released("drag_block"))
+			{
+				dragging = false;
+				Godot::print("End dragging");
+			}
 		}
 	}
 
@@ -56,12 +62,6 @@ namespace godot
 			this->set_z_index(++PlayerController::zOrder);
 
 			Godot::print("Start dragging");
-		}
-		else if(Input::get_singleton()->is_action_just_released("drag_block"))
-		{
-			dragging = false;
-
-			Godot::print("End dragging");
 		}
 	}
 }

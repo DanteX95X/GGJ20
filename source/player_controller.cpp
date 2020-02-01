@@ -9,6 +9,8 @@
 
 namespace godot
 {
+	int64_t PlayerController::zOrder = 0;
+
 	void PlayerController::_register_methods()
 	{
 		godot::register_method("_ready", &PlayerController::_ready);
