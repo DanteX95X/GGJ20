@@ -2,6 +2,8 @@
 #include "./nail.h"
 #include "./block.h"
 #include "./block_parent.h"
+#include "ui/reload_button.h"
+#include "ui/play_button.h"
 //$include$ DO NOT DELETE THIS COMMENT
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o)
@@ -22,5 +24,7 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle)
 	godot::register_class<godot::Nail>();
 	godot::register_class<godot::Block>();
 	godot::register_class<godot::BlockParent>();
+	godot::register_class<godot::ReloadButton>();
+	godot::register_class<godot::PlayButton>();
 	//$register$ DO NOT DELETE THIS COMMENT
 }

@@ -8,6 +8,8 @@ namespace godot
 	{
 		godot::register_method("_ready", &BlockParent::_ready);
 		godot::register_method("_process", &BlockParent::_process);
+
+		godot::register_method("EnableGravity", &BlockParent::EnableGravityInChildren);
 	}
 
 	BlockParent::BlockParent()

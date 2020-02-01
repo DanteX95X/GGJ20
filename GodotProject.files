@@ -1325,3 +1325,7 @@ source/./block.h
 source/./block.cpp
 source/./block_parent.h
 source/./block_parent.cpp
+source/ui/reload_button.h
+source/ui/reload_button.cpp
+source/ui/play_button.h
+source/ui/play_button.cpp

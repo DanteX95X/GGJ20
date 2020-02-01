@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=5]
+[ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=6]
+[ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=7]
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,3 +32,24 @@ node_a = NodePath("../staticBlock")
 node_b = NodePath("../backgroundRB")
 bias = 0.9
 softness = 1.0
+
+[node name="ReloadButton" type="Button" parent="."]
+margin_top = 666.315
+margin_right = 123.0
+margin_bottom = 718.315
+icon = ExtResource( 4 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 1158.58
+margin_top = 666.315
+margin_right = 1281.58
+margin_bottom = 736.315
+icon = ExtResource( 4 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -4,6 +4,8 @@
 #include <Input.hpp>
 #include <Viewport.hpp>
 #include <Area2D.hpp>
+#include <SceneTree.hpp>
+#include "block_parent.h"
 
 namespace godot
 {
@@ -31,13 +33,16 @@ namespace godot
 
 	void PlayerController::_ready()
 	{
+		Node* playButton = get_node("PlayButton");
+		BlockParent* blockParent = static_cast<BlockParent*>(get_node("BlockParent"));
+		playButton->connect("play_physics", blockParent, "EnableGravity");
 	}
 
 	void PlayerController::_process(float delta)
 	{
 		Vector2 mousePosition = this->get_local_mouse_position();
 
-		auto input = Input::get_singleton();
+		const auto& input = Input::get_singleton();
 
 		if(!this->placingStarted && input->is_action_just_released("start_level"))
 		{
@@ -54,6 +59,11 @@ namespace godot
 			node->set_z_index(++PlayerController::zOrder);
 			node->set_position(mousePosition);
 			add_child(node);
+		}
+
+		if(input->is_action_just_pressed("ui_cancel"))
+		{
+			this->get_tree()->reload_current_scene();
 		}
 	}
 
