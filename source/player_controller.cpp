@@ -60,11 +60,6 @@ namespace godot
 			node->set_position(mousePosition);
 			add_child(node);
 		}
-
-		if(input->is_action_just_pressed("ui_cancel"))
-		{
-			this->get_tree()->reload_current_scene();
-		}
 	}
 
 	void PlayerController::Explode()

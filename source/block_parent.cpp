@@ -30,10 +30,6 @@ namespace godot
 
 	void BlockParent::_process(float delta)
 	{
-		if(Input::get_singleton()->is_action_just_released("ui_accept"))
-		{
-			EnableGravityInChildren();
-		}
 	}
 
 	void BlockParent::EnableGravityInChildren()
