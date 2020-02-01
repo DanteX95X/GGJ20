@@ -1,44 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 40.0
+[ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
-position = Vector2( 490, 319 )
 script = ExtResource( 1 )
 
-[node name="Test" type="RigidBody2D" parent="."]
-position = Vector2( -213.743, -121.92 )
-collision_mask = 0
-gravity_scale = 0.0
+[node name="Block" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1005.05, 248.96 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
-shape = SubResource( 1 )
+[node name="Block2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1166.05, 248.96 )
 
-[node name="Sprite" type="Sprite" parent="Test"]
-texture = ExtResource( 2 )
-
-[node name="Test2" type="RigidBody2D" parent="."]
-position = Vector2( -162.743, -121.92 )
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test2"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Test2"]
-texture = ExtResource( 2 )
-
-[node name="Test3" type="RigidBody2D" parent="."]
-position = Vector2( -194.743, -169.92 )
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test3"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Test3"]
-texture = ExtResource( 2 )
+[node name="Block3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1085.05, 120.96 )
