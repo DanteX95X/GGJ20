@@ -27,6 +27,8 @@ namespace godot
 		void OnBodyEntered(PhysicsBody2D* area);
 
 		RigidBody2D* nailBody{nullptr};
+		bool canResolveCollisions{true};
+		bool didResolveCollision{false};
 	};
 }
 
