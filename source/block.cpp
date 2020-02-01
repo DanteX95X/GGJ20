@@ -33,9 +33,9 @@ namespace godot
 	{
 		if (dragging)
 		{
-			Vector2 diff(get_local_mouse_position() - lastMousePosition);
-			set_position(get_position() + diff);
-			lastMousePosition = get_local_mouse_position();
+			Vector2 diff(get_global_mouse_position() - lastMousePosition);
+			this->set_global_position(get_global_position() + diff);
+			lastMousePosition = get_global_mouse_position();
 		}
 	}
 
@@ -45,7 +45,7 @@ namespace godot
 		{
 			dragging = true;
 
-			lastMousePosition = get_local_mouse_position();
+			lastMousePosition = get_global_mouse_position();
 
 			Godot::print("Start dragging");
 		}
