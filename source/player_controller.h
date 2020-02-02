@@ -26,6 +26,8 @@ namespace godot
 	private:
 		Ref<PackedScene> nail{};
 
+		void SetNailsLabelValue();
+
 		int remainingNails{10};
 		bool exploded{false};
 		float timeAfterExplosion{0.0f};
