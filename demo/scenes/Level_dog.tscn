@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
+[ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
+[ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/blocks/block_rect1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/blocks/block_circle_big1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/blocks/block_square1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/actors/blocks/block_circle1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/actors/blocks/block_circle_medium1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/actors/blocks/block_rect_big1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
+
+[node name="PlayerCtrl" type="Node2D"]
+script = ExtResource( 1 )
+Nails = 18
+
+[node name="backgroundRB" parent="." instance=ExtResource( 3 )]
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 532.429, 482.774 )
+node_a = NodePath("../staticBlock")
+node_b = NodePath("../backgroundRB")
+bias = 0.9
+softness = 1.0
+
+[node name="PlayButton" parent="." instance=ExtResource( 4 )]
+
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="staticBlock" parent="." instance=ExtResource( 10 )]
+position = Vector2( 786.208, 458.072 )
+isStaticBlock = true
+
+[node name="BlockParent" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Block_rect_big" parent="BlockParent" instance=ExtResource( 10 )]
+position = Vector2( 585.787, 458.072 )
+
+[node name="Block_circle_big" parent="BlockParent" instance=ExtResource( 6 )]
+position = Vector2( 891.349, 342.827 )
+
+[node name="Block_1_medium_circle" parent="BlockParent" instance=ExtResource( 9 )]
+position = Vector2( 891.997, 377.526 )
+
+[node name="Block_1_circle" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 866.088, 284.995 )
+
+[node name="Block_1_circle3" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 921.607, 286.845 )
+
+[node name="Block_1_square" parent="BlockParent" instance=ExtResource( 7 )]
+position = Vector2( 838.329, 236.879 )
+rotation = -0.409737
+
+[node name="Block_1_square2" parent="BlockParent" instance=ExtResource( 7 )]
+position = Vector2( 962.32, 244.281 )
+rotation = 0.504048
+
+[node name="Block_rect" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 505.218, 562.587 )
+rotation = -1.58549
+
+[node name="Block_rect2" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 588.496, 560.737 )
+rotation = -1.58549
+
+[node name="Block_rect3" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 790.213, 553.334 )
+rotation = -1.58549
+
+[node name="Block_rect4" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 875.341, 553.334 )
+rotation = -1.58549
+
+[node name="Block_rect5" parent="BlockParent" instance=ExtResource( 5 )]
+position = Vector2( 453.401, 359.02 )
+rotation = -2.35055
+
+[node name="Conditions" type="Node" parent="."]
+
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 578.067, 452.169 )
+scale = Vector2( 3.28, 2.16 )
+ProperBlockName = "Block_rect_big"
+
+[node name="Condition2" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 891.305, 367.962 )
+ProperBlockName = "Block_circle_big"
+
+[node name="Condition3" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 685.609, 584.207 )
+scale = Vector2( 10, 1 )
+ProperBlockName = "Block_rect"

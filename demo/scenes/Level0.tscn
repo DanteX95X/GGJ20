@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
+[ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
+[ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/blocks/block_square2_width.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
+
+[node name="PlayerCtrl" type="Node2D"]
+script = ExtResource( 1 )
+Nails = 3
+
+[node name="backgroundRB" parent="." instance=ExtResource( 3 )]
+
+[node name="BlockParent" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Block_2_square_width2" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 579.493, 320.44 )
+rotation = -1.55452
+
+[node name="Block_2_square_width3" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 578.266, 432.164 )
+rotation = -1.59018
+
+[node name="staticBlock" parent="." instance=ExtResource( 8 )]
+position = Vector2( 579.493, 205.033 )
+rotation = -1.58596
+isStaticBlock = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 580.311, 205.305 )
+node_a = NodePath("../staticBlock")
+node_b = NodePath("../backgroundRB")
+bias = 0.9
+softness = 1.0
+
+[node name="PlayButton" parent="." instance=ExtResource( 4 )]
+
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="Conditions" type="Node" parent="."]
+
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 577.404, 456.438 )
+ProperBlockName = "Block_2_square_width"
