@@ -1,11 +1,29 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=17]
+[ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=6]
+[ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=7]
+[ext_resource path="res://assets/graphics/reload_button_normal.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/reload_button_hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/reload_button_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/play_button_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/play_button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 16 )
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -48,10 +66,62 @@ node_b = NodePath("../backgroundRB")
 bias = 0.9
 softness = 1.0
 
-[node name="PlayButton" parent="." instance=ExtResource( 4 )]
+[node name="ReloadButton" type="TextureButton" parent="."]
+margin_top = 584.0
+margin_right = 140.0
+margin_bottom = 718.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="TextureButton" parent="."]
+margin_left = 1152.0
+margin_top = 592.0
+margin_right = 1280.0
+margin_bottom = 720.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 20 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+HoverTexture = ExtResource( 15 )
+NormalTexture = ExtResource( 14 )
+PressedTexture = ExtResource( 13 )
+
+[node name="NailsLabel" type="Label" parent="."]
+margin_left = 1.32684
+margin_top = -1.99027
+margin_right = 440.327
+margin_bottom = 147.01
+custom_fonts/font = SubResource( 1 )
+text = "Nails: "
+
+[node name="NailsValue" type="Label" parent="."]
+margin_left = 215.318
+margin_top = -1.99027
+margin_right = 654.318
+margin_bottom = 147.01
+custom_fonts/font = SubResource( 1 )
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
 
 [node name="Conditions" type="Node" parent="."]
 
-[node name="Condition" parent="Conditions" instance=ExtResource( 17 )]
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
 position = Vector2( 504.3, 216 )
 ProperBlockName = "Block2"

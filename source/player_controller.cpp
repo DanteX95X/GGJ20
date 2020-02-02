@@ -2,6 +2,7 @@
 #include "Input.hpp"
 #include "block.h"
 #include <ResourceLoader.hpp>
+#include <AudioStreamPlayer.hpp>
 #include <Input.hpp>
 #include <Label.hpp>
 #include <Viewport.hpp>
@@ -68,6 +69,7 @@ namespace godot
 			time += delta;
 			if(time >= 1.5f)
 			{
+				time = 0;
 				checkWin = false;
 
 				int required = get_node("Conditions")->get_child_count();
@@ -76,10 +78,16 @@ namespace godot
 			}
 		}
 
-		if(!this->placingStarted && input->is_action_just_released("start_level"))
+		if(!this->placingStarted)
 		{
-			this->placingStarted = true;
-			this->Explode();
+			time += delta;
+
+			if(time >= 3)
+			{
+				time = 0;
+				this->placingStarted = true;
+				this->Explode();
+			}
 		}
 
 		if(this->placingStarted && input->is_action_just_released("place_nail") && this->remainingNails > 0)
@@ -125,6 +133,16 @@ namespace godot
 		}
 	}
 
+	void PlayerController::LevelSuccess()
+	{
+		static_cast<AudioStreamPlayer*>(this->get_node("kidsSound"))->play();
+	}
+
+	void PlayerController::LevelFailed()
+	{
+		static_cast<AudioStreamPlayer*>(this->get_node("crowdSound"))->play();
+    }
+
 	void PlayerController::CheckWinCondition()
 	{
 		checkWin = true;
@@ -157,8 +175,14 @@ namespace godot
 	void PlayerController::GameOver(bool win)
 	{
 		if(win)
+        {
 			Godot::print("win");
+            LevelSuccess();
+        }
 		else
+        {
 			Godot::print("raptot zjebałeś");
+            LevelFailed();
+        }
 	}
 }

@@ -1,5 +1,6 @@
 #include "play_button.h"
 #include <SceneTree.hpp>
+#include <Input.hpp>
 
 namespace godot
 {
@@ -37,6 +38,10 @@ namespace godot
 
 	void PlayButton::_process(float delta)
 	{
+		if(Input::get_singleton()->is_action_just_released("ui_end"))
+		{
+			get_tree()->change_scene(nextLevelPath);
+		}
 	}
 
 	void PlayButton::ButtonPressed()

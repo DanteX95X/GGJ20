@@ -28,6 +28,9 @@ namespace godot
 
 		static int64_t zOrder;
 
+		void LevelSuccess();
+		void LevelFailed();
+
 	private:
 		Ref<PackedScene> nail{};
 
