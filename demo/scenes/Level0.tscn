@@ -11,32 +11,20 @@
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
-Nails = 13
+Nails = 3
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
 [node name="BlockParent" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Block_2_square_width" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 534.127, 269.211 )
-rotation = -0.394125
-
 [node name="Block_2_square_width2" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 624.341, 276.371 )
-rotation = 0.57486
+position = Vector2( 579.493, 320.44 )
+rotation = -1.55452
 
 [node name="Block_2_square_width3" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 642.957, 343.674 )
-rotation = 2.01101
-
-[node name="Block_2_square_width4" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 508.351, 337.946 )
-rotation = 1.29181
-
-[node name="Block_2_square_width5" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 571.358, 396.657 )
-rotation = 0.0319667
+position = Vector2( 578.266, 432.164 )
+rotation = -1.59018
 
 [node name="staticBlock" parent="." instance=ExtResource( 8 )]
 position = Vector2( 579.493, 205.033 )
@@ -61,13 +49,5 @@ stream = ExtResource( 18 )
 [node name="Conditions" type="Node" parent="."]
 
 [node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 574.54, 397.727 )
-ProperBlockName = "Block_2_square_width"
-
-[node name="Condition2" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 640.411, 316.104 )
-ProperBlockName = "Block_2_square_width"
-
-[node name="Condition3" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 508.669, 314.672 )
+position = Vector2( 577.404, 456.438 )
 ProperBlockName = "Block_2_square_width"
