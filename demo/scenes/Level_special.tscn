@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=2]
@@ -8,10 +8,56 @@
 [ext_resource path="res://scenes/actors/blocks/block_rect1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/actors/blocks/block_circle_big1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=10]
+[ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=9]
+[ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=10]
 [ext_resource path="res://scenes/actors/blocks/block_circle1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/actors/blocks/block_circle_medium1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/play_button_hover.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/play_button_pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/graphics/play_button_normal.png" type="Texture" id=18]
+[ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=19]
+
+[sub_resource type="Animation" id=1]
+resource_name = "HammerAnimation"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HammerAnimation/Hammer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HammerAnimation/Hammer:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7, 0.85, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 75.0002, -15.0, 15.0, -15.0, 0.0, -15.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HammerAnimation/AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,18 +72,9 @@ node_b = NodePath("../backgroundRB")
 bias = 0.9
 softness = 1.0
 
-[node name="PlayButton" parent="." instance=ExtResource( 5 )]
-
-[node name="kidsSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
-
-[node name="crowdSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-
 [node name="staticBlock" parent="." instance=ExtResource( 6 )]
 position = Vector2( 465.551, 343.626 )
 rotation = -2.40615
-scale = Vector2( 1, 1 )
 isStaticBlock = true
 
 [node name="BlockParent" type="Node" parent="."]
@@ -70,5 +107,26 @@ rotation = 0.864352
 [node name="Conditions" type="Node" parent="."]
 
 [node name="Condition" parent="Conditions" instance=ExtResource( 3 )]
-position = Vector2( 509.84, 385.529 )
+position = Vector2( 508.253, 433.129 )
 ProperBlockName = "Block"
+
+[node name="HammerAnimation" type="AnimationPlayer" parent="." instance=ExtResource( 9 )]
+anims/HammerAnimation = SubResource( 1 )
+
+[node name="PlayButton" type="TextureButton" parent="." instance=ExtResource( 5 )]
+margin_left = 10.4608
+margin_top = 579.104
+margin_right = 138.461
+margin_bottom = 707.104
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 15 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+NextLevelPath = "res://scenes/Menu.tscn"
+HoverTexture = ExtResource( 19 )
+NormalTexture = ExtResource( 13 )
+PressedTexture = ExtResource( 16 )
