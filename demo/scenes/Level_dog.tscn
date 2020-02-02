@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://scenes/actors/blocks/block_circle_medium1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/actors/blocks/block_rect_big1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=11]
-[ext_resource path="res://gdscripts/game_over_effect.gd" type="Script" id=12]
 [ext_resource path="res://scenes/actors/GameOverEffect.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
 
@@ -74,19 +73,19 @@ isStaticBlock = true
 [node name="BlockParent" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Block_rect_big" parent="BlockParent" instance=ExtResource( 10 )]
+[node name="dog_body" parent="BlockParent" instance=ExtResource( 10 )]
 position = Vector2( 585.787, 458.072 )
 
 [node name="Block_circle_big" parent="BlockParent" instance=ExtResource( 6 )]
 position = Vector2( 891.349, 342.827 )
 
-[node name="Block_1_medium_circle" parent="BlockParent" instance=ExtResource( 9 )]
+[node name="ryj" parent="BlockParent" instance=ExtResource( 9 )]
 position = Vector2( 891.997, 377.526 )
 
-[node name="Block_1_circle" parent="BlockParent" instance=ExtResource( 8 )]
+[node name="eye" parent="BlockParent" instance=ExtResource( 8 )]
 position = Vector2( 866.088, 284.995 )
 
-[node name="Block_1_circle3" parent="BlockParent" instance=ExtResource( 8 )]
+[node name="eye2" parent="BlockParent" instance=ExtResource( 8 )]
 position = Vector2( 921.607, 286.845 )
 
 [node name="Block_1_square" parent="BlockParent" instance=ExtResource( 7 )]
@@ -97,7 +96,7 @@ rotation = -0.409737
 position = Vector2( 962.32, 244.281 )
 rotation = 0.504048
 
-[node name="Block_rect" parent="BlockParent" instance=ExtResource( 5 )]
+[node name="nogi" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 505.218, 562.587 )
 rotation = -1.58549
 
@@ -109,7 +108,7 @@ rotation = -1.58549
 position = Vector2( 790.213, 553.334 )
 rotation = -1.58549
 
-[node name="Block_rect4" parent="BlockParent" instance=ExtResource( 5 )]
+[node name="nogi2" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 875.341, 553.334 )
 rotation = -1.58549
 
@@ -119,28 +118,24 @@ rotation = -2.35055
 
 [node name="Conditions" type="Node" parent="."]
 
-[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 578.067, 452.169 )
-ProperBlockName = "Block_rect_big"
-
 [node name="Condition2" parent="Conditions" instance=ExtResource( 19 )]
 position = Vector2( 891.305, 367.962 )
-ProperBlockName = "Block_circle_big"
+ProperBlockName = "ryj"
 
 [node name="Condition3" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 556.425, 588.308 )
+position = Vector2( 546.086, 575.385 )
 scale = Vector2( 5, 1 )
-ProperBlockName = "Block_rect"
+ProperBlockName = "nogi"
 
 [node name="Condition4" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 835.299, 594.46 )
+position = Vector2( 831.422, 575.075 )
 scale = Vector2( 5, 1 )
-ProperBlockName = "Block_rect"
+ProperBlockName = "nogi"
 
 [node name="Condition5" parent="Conditions" instance=ExtResource( 19 )]
 position = Vector2( 893.521, 298.156 )
 scale = Vector2( 3, 2 )
-ProperBlockName = "Block_1_circle"
+ProperBlockName = "eye"
 
 [node name="PlayButton" parent="." instance=ExtResource( 4 )]
 NextLevelPath = "res://scenes/Level_special.tscn"
@@ -148,8 +143,4 @@ NextLevelPath = "res://scenes/Level_special.tscn"
 [node name="HammerAnimation" parent="." instance=ExtResource( 11 )]
 anims/HammerAnimation = SubResource( 1 )
 
-[node name="GameOverEffect" type="CanvasLayer" parent="." instance=ExtResource( 13 )]
-layer = 128
-offset = Vector2( -100, 100 )
-transform = Transform2D( 1, 0, 0, 1, -100, 100 )
-script = ExtResource( 12 )
+[node name="GameOverEffect" parent="." instance=ExtResource( 13 )]
