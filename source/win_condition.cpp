@@ -41,7 +41,7 @@ namespace godot
 	{
 		if(body->get_name().find(properBlockName) != -1 && !didEnter)
 		{
-			Godot::print("entered");
+			Godot::print("entered " + properBlockName);
 			didEnter = true;
 			emit_signal("success_changed", true);
 		}
@@ -51,7 +51,7 @@ namespace godot
 	{
 		if(body->get_name().find(properBlockName != -1) && didEnter)
 		{
-			Godot::print("exited");
+			Godot::print("exited " + properBlockName);
 			didEnter = false;
 			emit_signal("success_changed", false);
 		}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/reload_button_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/play_button_hover.png" type="Texture" id=6]
-[ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/fonts/ChockABlockNf-gplE.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=8]
 [ext_resource path="res://assets/graphics/reload_button_pressed.png" type="Texture" id=9]
 [ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=10]
@@ -21,9 +21,11 @@
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=19]
 [ext_resource path="res://assets/sounds/drumrollshort.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/sounds/woodbroken.ogg" type="AudioStream" id=21]
+[ext_resource path="res://scenes/actors/splinters.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/music/pat-mat-original-theme (online-audio-converter.com).ogg" type="AudioStream" id=23]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 40
 outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -43,7 +45,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-NextLevelPath = null
 HoverTexture = ExtResource( 4 )
 NormalTexture = ExtResource( 11 )
 PressedTexture = ExtResource( 10 )
@@ -61,9 +62,9 @@ __meta__ = {
 }
 
 [node name="NailsValue" type="Label" parent="."]
-margin_left = 213.988
+margin_left = 236.843
 margin_top = -570.023
-margin_right = 652.988
+margin_right = 675.843
 margin_bottom = -421.023
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
@@ -109,4 +110,11 @@ stream = ExtResource( 20 )
 
 [node name="kidsSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+
+[node name="ExplosionParticles" parent="." instance=ExtResource( 22 )]
+position = Vector2( 652.988, -251.056 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 23 )
+autoplay = true
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]

@@ -11,6 +11,7 @@
 #include "block_parent.h"
 #include "win_condition.h"
 #include <Node.hpp>
+#include <Particles2D.hpp>
 
 #include <string>
 
@@ -172,6 +173,10 @@ namespace godot
 	{
 		auto playButton = this->get_node("PlayButton");
 		static_cast<AudioStreamPlayer*>(playButton->get_node("brokeSound"))->play();
+		Particles2D* particles = static_cast<Particles2D*>(playButton->get_node("ExplosionParticles"));
+		particles->set_emitting(true);
+		auto background_position = static_cast<Node2D*>(this->get_node("backgroundRB"))->get_global_position();
+		particles->set_global_position(background_position);
 	}
 
 	void PlayerController::CheckWinCondition()

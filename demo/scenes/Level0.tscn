@@ -29,6 +29,7 @@ Nails = 3
 [node name="GameOverEffect" parent="." instance=ExtResource( 10 )]
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
+position = Vector2( 504, 344 )
 
 [node name="BlockParent" type="Node" parent="."]
 script = ExtResource( 2 )
