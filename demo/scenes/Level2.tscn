@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://scenes/actors/blocks/block_rect_big1.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/actors/blocks/block_rect1.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -85,3 +86,21 @@ __meta__ = {
 HoverTexture = ExtResource( 15 )
 NormalTexture = ExtResource( 14 )
 PressedTexture = ExtResource( 13 )
+
+[node name="Conditions" type="Node" parent="."]
+
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 509.84, 385.529 )
+ProperBlockName = "Block"
+
+[node name="Condition2" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 431.17, 499.656 )
+ProperBlockName = "Block"
+
+[node name="Condition3" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 584.078, 496.332 )
+ProperBlockName = "Block"
+
+[node name="Condition4" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 656.1, 334.559 )
+ProperBlockName = "Block"

@@ -12,6 +12,8 @@
 #include "win_condition.h"
 #include <Node.hpp>
 
+#include <string>
+
 namespace godot
 {
 	int64_t PlayerController::zOrder = 0;
@@ -92,11 +94,11 @@ namespace godot
 
 		if(this->placingStarted)
 		{
-			time += delta;
+			nailTime += delta;
 
-			if(time > 1 && input->is_action_just_released("place_nail") && this->remainingNails > 0)
+			if(nailTime > 1 && input->is_action_just_released("place_nail") && this->remainingNails > 0)
 			{
-				time = 0;
+				nailTime = 0;
 				animator->play("HammerAnimation");
 				this->remainingNails -= 1;
 				godot::Godot::print("Nails reminding: {0}", this->remainingNails);
@@ -117,10 +119,14 @@ namespace godot
 
 	void PlayerController::SetNailsLabelValue()
 	{
-		Label* nailsValue = static_cast<Label*>(this->get_node("NailsValue"));
-		if(nailsValue != nullptr)
+		Node* playButton = static_cast<Node*>(this->get_node("PlayButton"));
+		if (playButton != nullptr)
 		{
-			nailsValue->set_text(std::to_string(this->remainingNails).c_str());
+			Label* nailsValue = static_cast<Label*>(playButton->get_node("NailsValue"));
+			if(nailsValue != nullptr)
+			{
+				nailsValue->set_text(std::to_string(this->remainingNails).c_str());
+			}
 		}
 	}
 
@@ -153,6 +159,7 @@ namespace godot
 	void PlayerController::CheckWinCondition()
 	{
 		checkWin = true;
+		time = 0;
 
 		Node* node = get_node("Conditions");
 

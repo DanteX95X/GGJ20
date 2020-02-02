@@ -44,6 +44,7 @@ namespace godot
 		bool checkWin{false};
 		int successes = 0;
 		float time = 0;
+		float nailTime = 0;
 
 		AnimationPlayer* animator;
 
