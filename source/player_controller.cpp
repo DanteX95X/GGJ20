@@ -56,6 +56,8 @@ namespace godot
 		playButton->connect("play_physics", this, "CheckWinCondition");
 		connect("game_over", playButton, "OnGameOver");
 		connect("game_over", this, "GameOver");
+
+		animator = static_cast<AnimationPlayer*>(get_node("HammerAnimation"));
 	}
 
 	void PlayerController::_process(float delta)
@@ -90,17 +92,28 @@ namespace godot
 			}
 		}
 
-		if(this->placingStarted && input->is_action_just_released("place_nail") && this->remainingNails > 0)
+		if(this->placingStarted)
 		{
-			this->remainingNails -= 1;
-			godot::Godot::print("Nails reminding: {0}", this->remainingNails);
-			Node* instance = nail->instance();
-			Node2D* node = static_cast<Node2D*>(instance);
-			node->set_z_index(++PlayerController::zOrder);
-			node->set_position(mousePosition);
-			add_child(node);
+			nailTime += delta;
 
-			SetNailsLabelValue();
+			if(nailTime > 1 && input->is_action_just_released("place_nail") && this->remainingNails > 0)
+			{
+				nailTime = 0;
+				animator->play("HammerAnimation");
+				this->remainingNails -= 1;
+				godot::Godot::print("Nails reminding: {0}", this->remainingNails);
+				Node* instance = nail->instance();
+				Node2D* node = static_cast<Node2D*>(instance);
+				node->set_z_index(++PlayerController::zOrder);
+				node->set_position(mousePosition);
+				add_child(node);
+
+				SetNailsLabelValue();
+
+				auto hammer = static_cast<Node2D*>(animator->get_node("Hammer"));
+				hammer->set_global_position(get_global_mouse_position() + Vector2{100, -40});
+				hammer->set_z_index(PlayerController::zOrder + 1);
+			}
 		}
 	}
 
@@ -146,6 +159,7 @@ namespace godot
 	void PlayerController::CheckWinCondition()
 	{
 		checkWin = true;
+		time = 0;
 
 		Node* node = get_node("Conditions");
 
