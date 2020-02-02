@@ -19,7 +19,11 @@
 [ext_resource path="res://assets/graphics/back_button_pressed.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
-size = 72
+size = 50
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 7 )
 
 [node name="PlayButton" type="TextureButton"]
@@ -44,6 +48,8 @@ margin_top = -570.023
 margin_right = 438.997
 margin_bottom = -421.023
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.964706, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Nails: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,6 +61,8 @@ margin_top = -570.023
 margin_right = 652.988
 margin_bottom = -421.023
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false

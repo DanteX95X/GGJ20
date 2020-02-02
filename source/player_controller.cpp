@@ -31,6 +31,7 @@ namespace godot
 
 		godot::register_signal<PlayerController>("game_over", "win", GODOT_VARIANT_TYPE_BOOL);
 		godot::register_signal<PlayerController>("level_ready", Dictionary());
+		godot::register_signal<PlayerController>("simulation_started", Dictionary());
 	}
 
 	PlayerController::PlayerController()
@@ -161,6 +162,8 @@ namespace godot
 
 	void PlayerController::CheckWinCondition()
 	{
+		emit_signal("simulation_started");
+
 		checkWin = true;
 		time = 0;
 
