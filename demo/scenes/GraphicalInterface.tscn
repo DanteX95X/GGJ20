@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/sounds/drumrollshort.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/sounds/woodbroken.ogg" type="AudioStream" id=21]
 [ext_resource path="res://scenes/actors/splinters.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/music/pat-mat-original-theme (online-audio-converter.com).ogg" type="AudioStream" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -112,4 +113,8 @@ stream = ExtResource( 18 )
 
 [node name="ExplosionParticles" parent="." instance=ExtResource( 22 )]
 position = Vector2( 652.988, -251.056 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 23 )
+autoplay = true
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
