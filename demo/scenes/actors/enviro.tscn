@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/graphics/room.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/abstract-antique-architecture-backdrop-168442.jpg" type="Texture" id=1]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 700, 500 )
 
 [node name="backgroundRB" type="RigidBody2D"]
@@ -14,13 +16,16 @@ mode = 1
 mass = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 127.212, 29.8875 )
+material = SubResource( 1 )
+position = Vector2( 127.212, 64.868 )
+scale = Vector2( 0.304073, 0.304073 )
 texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 700, 700 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -6.76001, -77.375 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="WallNode" parent="." instance=ExtResource( 2 )]
 position = Vector2( 127.144, 462.526 )
