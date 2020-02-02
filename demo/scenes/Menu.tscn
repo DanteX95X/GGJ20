@@ -167,7 +167,7 @@ shape = SubResource( 6 )
 
 [node name="Button" type="Button" parent="Quit"]
 margin_top = -55.0
-margin_right = 328.0
+margin_right = 230.0
 margin_bottom = 172.0
 theme = SubResource( 3 )
 button_mask = 3

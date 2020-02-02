@@ -39,18 +39,20 @@ namespace godot
 
 	void WinCondition::OnBodyEntered(PhysicsBody2D* body)
 	{
-		if(body->get_name().find(properBlockName) != -1)
+		if(body->get_name().find(properBlockName) != -1 && !didEnter)
 		{
 			Godot::print("entered");
+			didEnter = true;
 			emit_signal("success_changed", true);
 		}
 	}
 
 	void WinCondition::OnBodyExited(PhysicsBody2D* body)
 	{
-		if(body->get_name().find(properBlockName != -1))
+		if(body->get_name().find(properBlockName != -1) && didEnter)
 		{
 			Godot::print("exited");
+			didEnter = false;
 			emit_signal("success_changed", false);
 		}
 	}

@@ -26,6 +26,7 @@ namespace godot
 
 	private:
 		String properBlockName = "";
+		bool didEnter = false;
 	};
 }
 
