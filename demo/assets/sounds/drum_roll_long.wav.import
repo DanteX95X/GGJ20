@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drum_roll_long.wav-e4567c3e63f88e529c6b7c89ef051adb.sample"
+
+[deps]
+
+source_file="res://assets/sounds/drum_roll_long.wav"
+dest_files=[ "res://.import/drum_roll_long.wav-e4567c3e63f88e529c6b7c89ef051adb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
