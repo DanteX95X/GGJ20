@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -82,6 +83,7 @@ margin_bottom = 720.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 18 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -105,6 +107,9 @@ margin_right = 654.318
 margin_bottom = 147.01
 custom_fonts/font = SubResource( 1 )
 text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Conditions" type="Node" parent="."]
 

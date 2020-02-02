@@ -51,6 +51,7 @@ namespace godot
 		BlockParent* blockParent = static_cast<BlockParent*>(get_node("BlockParent"));
 		playButton->connect("play_physics", blockParent, "EnableGravity");
 		playButton->connect("play_physics", this, "CheckWinCondition");
+		connect("game_over", playButton, "OnGameOver");
 		connect("game_over", this, "GameOver");
 	}
 
