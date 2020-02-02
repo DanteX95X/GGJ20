@@ -46,12 +46,12 @@ namespace godot
 	{
 		Ref<Resource> resource = ResourceLoader::get_singleton()->load("res://scenes/actors/nail.tscn");
 		nail = resource;
-
-		SetNailsLabelValue();
 	}
 
 	void PlayerController::_ready()
 	{
+		SetNailsLabelValue();
+
 		Node* playButton = get_node("PlayButton");
 		BlockParent* blockParent = static_cast<BlockParent*>(get_node("BlockParent"));
 		playButton->connect("play_physics", blockParent, "EnableGravity");
@@ -72,7 +72,7 @@ namespace godot
 		if(checkWin)
 		{
 			time += delta;
-			if(time >= 1.5f)
+			if(time >= 5)
 			{
 				time = 0;
 				checkWin = false;

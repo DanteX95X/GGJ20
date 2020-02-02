@@ -75,6 +75,7 @@ namespace godot
 
 	void Block::DisableDrag()
 	{
+		Godot::print("DisableDrag");
 		this->disconnect("input_event", this, "OnInputEvent");
 	}
 
