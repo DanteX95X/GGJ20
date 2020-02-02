@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=14]
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -29,18 +30,23 @@ script = ExtResource( 2 )
 
 [node name="Block" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 685.846, 180.525 )
+isStaticBlock = false
 
 [node name="Block2" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 514.061, 117.128 )
+isStaticBlock = false
 
 [node name="Block3" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 624, 117.128 )
+isStaticBlock = false
 
 [node name="Block4" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 344, 176 )
+isStaticBlock = false
 
 [node name="Block5" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 416, 104 )
+isStaticBlock = false
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
@@ -99,3 +105,9 @@ margin_right = 654.318
 margin_bottom = 147.01
 custom_fonts/font = SubResource( 1 )
 text = "10"
+
+[node name="Conditions" type="Node" parent="."]
+
+[node name="Condition" parent="Conditions" instance=ExtResource( 17 )]
+position = Vector2( 504.3, 216 )
+ProperBlockName = "Block2"
