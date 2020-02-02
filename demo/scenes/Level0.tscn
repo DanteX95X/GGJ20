@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://gdscripts/tutorials.gd" type="Script" id=7]
 [ext_resource path="res://scenes/actors/blocks/block_square2_width.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gdscripts/game_over_tutorial.gd" type="Script" id=9]
+[ext_resource path="res://scenes/actors/GameOverEffect.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
 [ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
@@ -24,6 +25,8 @@ font_data = ExtResource( 6 )
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
 Nails = 3
+
+[node name="GameOverEffect" parent="." instance=ExtResource( 10 )]
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
