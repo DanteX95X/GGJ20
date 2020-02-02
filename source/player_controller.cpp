@@ -66,6 +66,7 @@ namespace godot
 			time += delta;
 			if(time >= 1.5f)
 			{
+				time = 0;
 				checkWin = false;
 
 				int required = get_node("Conditions")->get_child_count();
@@ -74,10 +75,16 @@ namespace godot
 			}
 		}
 
-		if(!this->placingStarted && input->is_action_just_released("start_level"))
+		if(!this->placingStarted)
 		{
-			this->placingStarted = true;
-			this->Explode();
+			time += delta;
+
+			if(time >= 3)
+			{
+				time = 0;
+				this->placingStarted = true;
+				this->Explode();
+			}
 		}
 
 		if(this->placingStarted && input->is_action_just_released("place_nail") && this->remainingNails > 0)
