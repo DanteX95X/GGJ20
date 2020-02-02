@@ -1,0 +1,11 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://assets/fonts/ChockABlockNf-gplE.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 150
+outline_size = 5
+outline_color = Color( 0.419608, 0.290196, 0.109804, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
