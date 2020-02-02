@@ -4,6 +4,7 @@
 #include "./block_parent.h"
 #include "ui/reload_button.h"
 #include "ui/play_button.h"
+#include "./win_condition.h"
 //$include$ DO NOT DELETE THIS COMMENT
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o)
@@ -26,5 +27,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle)
 	godot::register_class<godot::BlockParent>();
 	godot::register_class<godot::ReloadButton>();
 	godot::register_class<godot::PlayButton>();
+	godot::register_class<godot::WinCondition>();
 	//$register$ DO NOT DELETE THIS COMMENT
 }

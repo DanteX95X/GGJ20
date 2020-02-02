@@ -8,23 +8,23 @@ rough = true
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 110, 110 )
+extents = Vector2( 80, 30 )
 
-[node name="Block" type="RigidBody2D"]
+[node name="Block_static" type="RigidBody2D"]
 input_pickable = true
 collision_mask = 0
 mode = 1
+mass = 1000.0
 physics_material_override = SubResource( 1 )
 gravity_scale = 5.0
 linear_damp = 0.2
 angular_damp = 0.2
 script = ExtResource( 1 )
-isStaticBlock = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 1.2605, -0.630257 )
+scale = Vector2( 0.72, 0.24 )
 texture = ExtResource( 2 )

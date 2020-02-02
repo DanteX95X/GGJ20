@@ -18,6 +18,8 @@
 [ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -31,18 +33,23 @@ script = ExtResource( 2 )
 
 [node name="Block" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 685.846, 180.525 )
+isStaticBlock = false
 
 [node name="Block2" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 514.061, 117.128 )
+isStaticBlock = false
 
 [node name="Block3" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 624, 117.128 )
+isStaticBlock = false
 
 [node name="Block4" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 344, 176 )
+isStaticBlock = false
 
 [node name="Block5" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 416, 104 )
+isStaticBlock = false
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
@@ -78,6 +85,7 @@ margin_bottom = 720.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 18 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,3 +118,8 @@ stream = ExtResource( 17 )
 
 [node name="crowdSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+[node name="Conditions" type="Node" parent="."]
+
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 504.3, 216 )
+ProperBlockName = "Block2"

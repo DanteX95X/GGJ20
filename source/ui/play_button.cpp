@@ -1,5 +1,6 @@
 #include "play_button.h"
 #include <SceneTree.hpp>
+#include <Input.hpp>
 
 namespace godot
 {
@@ -9,6 +10,7 @@ namespace godot
 		godot::register_method("_process", &PlayButton::_process);
 
 		godot::register_method("ButtonPressed", &PlayButton::ButtonPressed);
+		godot::register_method("OnGameOver", &PlayButton::OnGameOver);
 
 		godot::register_signal<PlayButton>("play_physics", Dictionary());
 		godot::register_property<PlayButton, String>("NextLevelPath", &PlayButton::nextLevelPath, "Pls, ustaw mnie!");
@@ -36,6 +38,10 @@ namespace godot
 
 	void PlayButton::_process(float delta)
 	{
+		if(Input::get_singleton()->is_action_just_released("ui_end"))
+		{
+			get_tree()->change_scene(nextLevelPath);
+		}
 	}
 
 	void PlayButton::ButtonPressed()
@@ -44,15 +50,24 @@ namespace godot
 		{
 			emit_signal("play_physics");
 			didPlayPhysics = true;
-			this->set_hover_texture(hoverTexture);
-			this->set_normal_texture(normalTexture);
-			this->set_pressed_texture(pressedTexture);
+			set_disabled(true);
 		}
 		else
 		{
 			Godot::print("changing scene to next level");
 			get_tree()->change_scene(nextLevelPath);
 
+		}
+	}
+
+	void PlayButton::OnGameOver(bool win)
+	{
+		if(win)
+		{
+			set_disabled(false);
+			this->set_hover_texture(hoverTexture);
+			this->set_normal_texture(normalTexture);
+			this->set_pressed_texture(pressedTexture);
 		}
 	}
 }
