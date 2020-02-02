@@ -48,9 +48,10 @@ namespace godot
 		{
 			didResolveCollision = true;
 			PinJoint2D* pin = PinJoint2D::_new();
-			this->add_child(pin);
+			pin->set_softness(0.1);
 			pin->set_node_a(body->get_path());
 			pin->set_node_b(nailBody->get_path());
+			this->add_child(pin);
 
 			Block* block = static_cast<Block*>(body);
 			if(block != nullptr)

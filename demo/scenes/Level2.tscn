@@ -4,7 +4,7 @@
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/graphics/play_button_normal.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/block.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/block_static.tscn" type="PackedScene" id=5]
 [ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=6]
 [ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=7]
 [ext_resource path="res://assets/graphics/reload_button_normal.png" type="Texture" id=8]
@@ -47,8 +47,8 @@ rotation = -0.85121
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
-[node name="staticBlock" parent="." instance=ExtResource( 5 )]
-position = Vector2( 504.3, 270.045 )
+[node name="Block_static" parent="." instance=ExtResource( 5 )]
+position = Vector2( 502, 271 )
 isStaticBlock = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]

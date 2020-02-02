@@ -3,6 +3,7 @@
 #include "block.h"
 #include <ResourceLoader.hpp>
 #include <Input.hpp>
+#include <Label.hpp>
 #include <Viewport.hpp>
 #include <Area2D.hpp>
 #include <SceneTree.hpp>
@@ -40,6 +41,8 @@ namespace godot
 	{
 		Ref<Resource> resource = ResourceLoader::get_singleton()->load("res://scenes/actors/nail.tscn");
 		nail = resource;
+
+		SetNailsLabelValue();
 	}
 
 	void PlayerController::_ready()
@@ -85,6 +88,18 @@ namespace godot
 			node->set_z_index(++PlayerController::zOrder);
 			node->set_position(mousePosition);
 			add_child(node);
+
+			SetNailsLabelValue();
+		}
+	}
+
+	void PlayerController::SetNailsLabelValue()
+	{
+		Label* nailsValue = static_cast<Label*>(this->get_node("NailsValue"));
+		if(nailsValue != nullptr)
+		{
+			godot::Godot::print("ssij godota");
+			nailsValue->set_text(std::to_string(this->remainingNails).c_str());
 		}
 	}
 

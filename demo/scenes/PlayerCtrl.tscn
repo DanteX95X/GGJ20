@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -15,7 +15,11 @@
 [ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=13]
 [ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=14]
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
-[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 16 )
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,28 +29,24 @@ script = ExtResource( 2 )
 
 [node name="Block" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 685.846, 180.525 )
-isStaticBlock = false
 
 [node name="Block2" parent="BlockParent" instance=ExtResource( 5 )]
-position = Vector2( 512, 96 )
-isStaticBlock = false
+position = Vector2( 514.061, 117.128 )
 
 [node name="Block3" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 624, 117.128 )
-isStaticBlock = false
 
 [node name="Block4" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 344, 176 )
-isStaticBlock = false
 
 [node name="Block5" parent="BlockParent" instance=ExtResource( 5 )]
 position = Vector2( 416, 104 )
-isStaticBlock = false
 
 [node name="backgroundRB" parent="." instance=ExtResource( 3 )]
 
 [node name="staticBlock" parent="." instance=ExtResource( 5 )]
 position = Vector2( 504.3, 270.045 )
+gravity_scale = 1.0
 isStaticBlock = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
@@ -84,12 +84,18 @@ HoverTexture = ExtResource( 15 )
 NormalTexture = ExtResource( 14 )
 PressedTexture = ExtResource( 13 )
 
-[node name="Conditions" type="Node" parent="."]
+[node name="NailsLabel" type="Label" parent="."]
+margin_left = 1.32684
+margin_top = -1.99027
+margin_right = 440.327
+margin_bottom = 147.01
+custom_fonts/font = SubResource( 1 )
+text = "Nails: "
 
-[node name="Condition" parent="Conditions" instance=ExtResource( 16 )]
-position = Vector2( 504, 216 )
-ProperBlockName = "Block2"
-
-[node name="Condition2" parent="Conditions" instance=ExtResource( 16 )]
-position = Vector2( 456, 288 )
-ProperBlockName = "Block4"
+[node name="NailsValue" type="Label" parent="."]
+margin_left = 215.318
+margin_top = -1.99027
+margin_right = 654.318
+margin_bottom = 147.01
+custom_fonts/font = SubResource( 1 )
+text = "10"
