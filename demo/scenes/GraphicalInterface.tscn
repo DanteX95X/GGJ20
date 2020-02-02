@@ -114,7 +114,7 @@ stream = ExtResource( 18 )
 [node name="ExplosionParticles" parent="." instance=ExtResource( 22 )]
 position = Vector2( 652.988, -251.056 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
 autoplay = true
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]

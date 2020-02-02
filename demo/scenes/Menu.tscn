@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/block_big1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/graphics/block_square1.png" type="Texture" id=8]
 [ext_resource path="res://gdscripts/toggle_fullscreen.gd" type="Script" id=9]
+[ext_resource path="res://scenes/menumusic.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/actors/TitleAnimation.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -98,6 +99,8 @@ shape = SubResource( 5 )
 [node name="Sprite" type="Sprite" parent="Stoper"]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
+
+[node name="Node2D" parent="." instance=ExtResource( 10 )]
 
 [node name="Credits" type="RigidBody2D" parent="."]
 position = Vector2( 425.516, 457.242 )
