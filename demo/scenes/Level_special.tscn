@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=2]
@@ -9,16 +9,10 @@
 [ext_resource path="res://scenes/actors/blocks/block_circle_big1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=9]
-[ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=10]
+[ext_resource path="res://gdscripts/game_over_effect.gd" type="Script" id=10]
 [ext_resource path="res://scenes/actors/blocks/block_circle1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/actors/blocks/block_circle_medium1.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=13]
-[ext_resource path="res://assets/graphics/play_button_hover.png" type="Texture" id=14]
-[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=15]
-[ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=16]
-[ext_resource path="res://assets/graphics/play_button_pressed.png" type="Texture" id=17]
-[ext_resource path="res://assets/graphics/play_button_normal.png" type="Texture" id=18]
-[ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=19]
+[ext_resource path="res://scenes/actors/GameOverEffect.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "HammerAnimation"
@@ -110,23 +104,14 @@ rotation = 0.864352
 position = Vector2( 508.253, 433.129 )
 ProperBlockName = "Block"
 
-[node name="HammerAnimation" type="AnimationPlayer" parent="." instance=ExtResource( 9 )]
+[node name="HammerAnimation" parent="." instance=ExtResource( 9 )]
 anims/HammerAnimation = SubResource( 1 )
 
-[node name="PlayButton" type="TextureButton" parent="." instance=ExtResource( 5 )]
-margin_left = 10.4608
-margin_top = 579.104
-margin_right = 138.461
-margin_bottom = 707.104
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 14 )
-texture_disabled = ExtResource( 15 )
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PlayButton" parent="." instance=ExtResource( 5 )]
 NextLevelPath = "res://scenes/Menu.tscn"
-HoverTexture = ExtResource( 19 )
-NormalTexture = ExtResource( 13 )
-PressedTexture = ExtResource( 16 )
+
+[node name="GameOverEffect" type="CanvasLayer" parent="." instance=ExtResource( 13 )]
+layer = 128
+offset = Vector2( -100, 100 )
+transform = Transform2D( 1, 0, 0, 1, -100, 100 )
+script = ExtResource( 10 )

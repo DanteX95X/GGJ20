@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scenes/actors/blocks/block_square_big1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/actors/blocks/block_rect1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gdscripts/game_over_effect.gd" type="Script" id=10]
+[ext_resource path="res://scenes/actors/GameOverEffect.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=1]
@@ -63,7 +65,7 @@ script = ExtResource( 1 )
 position = Vector2( 430.908, 486.024 )
 
 [node name="Block_rect3" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 638.011, 486.024 )
+position = Vector2( 541.011, 488.024 )
 
 [node name="Block_rect5" parent="BlockParent" instance=ExtResource( 8 )]
 position = Vector2( 690.013, 387.912 )
@@ -82,7 +84,7 @@ position = Vector2( 430.908, 577.884 )
 position = Vector2( 743.232, 581.224 )
 
 [node name="staticBlock" parent="." instance=ExtResource( 8 )]
-position = Vector2( 532.789, 486.024 )
+position = Vector2( 637.789, 488.024 )
 isStaticBlock = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
@@ -94,18 +96,8 @@ softness = 1.0
 
 [node name="Conditions" type="Node" parent="."]
 
-[node name="Condition6" parent="Conditions" instance=ExtResource( 3 )]
-position = Vector2( 697.592, 342.275 )
-scale = Vector2( 4, 4 )
-ProperBlockName = "Block_width_dark"
-
-[node name="Condition" parent="Conditions" instance=ExtResource( 3 )]
-position = Vector2( 426.944, 490.262 )
-scale = Vector2( 1, 6 )
-ProperBlockName = "Block_rect"
-
 [node name="Condition3" parent="Conditions" instance=ExtResource( 3 )]
-position = Vector2( 628.349, 486.104 )
+position = Vector2( 555.219, 488.32 )
 scale = Vector2( 1, 6 )
 ProperBlockName = "Block_rect"
 
@@ -114,7 +106,7 @@ position = Vector2( 742.774, 572.353 )
 ProperBlockName = "Block_circle"
 
 [node name="Condition5" parent="Conditions" instance=ExtResource( 3 )]
-position = Vector2( 428.472, 578.492 )
+position = Vector2( 473.364, 586.654 )
 ProperBlockName = "Block_circle"
 
 [node name="PlayButton" parent="." instance=ExtResource( 5 )]
@@ -122,3 +114,9 @@ NextLevelPath = "res://scenes/Level_dog.tscn"
 
 [node name="HammerAnimation" parent="." instance=ExtResource( 18 )]
 anims/HammerAnimation = SubResource( 1 )
+
+[node name="GameOverEffect" type="CanvasLayer" parent="." instance=ExtResource( 11 )]
+layer = 128
+offset = Vector2( -100, 100 )
+transform = Transform2D( 1, 0, 0, 1, -100, 100 )
+script = ExtResource( 10 )

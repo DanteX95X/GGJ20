@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gdscripts/game_over_effect.gd" type="Script" id=6]
+[ext_resource path="res://scenes/actors/GameOverEffect.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/actors/blocks/block_width_dark.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
-
 
 [node name="PlayerCtrl" type="Node2D"]
 script = ExtResource( 1 )
@@ -67,3 +68,9 @@ position = Vector2( 508.669, 314.672 )
 ProperBlockName = "Block_2_square_width"
 
 [node name="HammerAnimation" parent="." instance=ExtResource( 5 )]
+
+[node name="GameOverEffect" type="CanvasLayer" parent="." instance=ExtResource( 7 )]
+layer = 128
+offset = Vector2( -100, 100 )
+transform = Transform2D( 1, 0, 0, 1, -100, 100 )
+script = ExtResource( 6 )
