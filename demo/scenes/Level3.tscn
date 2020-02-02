@@ -118,7 +118,7 @@ position = Vector2( 428.472, 578.492 )
 ProperBlockName = "Block_circle"
 
 [node name="PlayButton" parent="." instance=ExtResource( 5 )]
-NextLevelPath = "res://scenes/Menu.tscn"
+NextLevelPath = "res://scenes/Level_dog.tscn"
 
 [node name="HammerAnimation" parent="." instance=ExtResource( 18 )]
 anims/HammerAnimation = SubResource( 1 )
