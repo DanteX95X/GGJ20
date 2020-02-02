@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=2]
@@ -13,16 +13,20 @@
 [ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/play_button_normal.png" type="Texture" id=12]
 [ext_resource path="res://assets/graphics/play_button_pressed.png" type="Texture" id=13]
+[ext_resource path="res://gdscripts/back_to_menu.gd" type="Script" id=14]
+[ext_resource path="res://assets/graphics/back_button_normal.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/back_button_hover.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/back_button_pressed.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
 font_data = ExtResource( 7 )
 
 [node name="PlayButton" type="TextureButton"]
-margin_left = 1152.0
-margin_top = 592.0
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_left = 10.4608
+margin_top = 579.104
+margin_right = 138.461
+margin_bottom = 707.104
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 6 )
@@ -58,10 +62,9 @@ __meta__ = {
 }
 
 [node name="ReloadButton" type="TextureButton" parent="."]
-margin_left = -1152.0
-margin_top = -8.0
-margin_right = -1012.0
-margin_bottom = 126.0
+margin_top = -144.723
+margin_right = 140.0
+margin_bottom = -10.7227
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 5 )
@@ -69,3 +72,16 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_top = -292.695
+margin_right = 128.0
+margin_bottom = -164.695
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 16 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
