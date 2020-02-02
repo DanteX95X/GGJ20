@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
 [ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=20]
+[ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -124,3 +125,5 @@ stream = ExtResource( 18 )
 [node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
 position = Vector2( 504.3, 216 )
 ProperBlockName = "Block2"
+
+[node name="HammerAnimation" parent="." instance=ExtResource( 21 )]

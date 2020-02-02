@@ -4,6 +4,7 @@
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <PackedScene.hpp>
+#include <AnimationPlayer.hpp>
 
 namespace godot
 {
@@ -43,6 +44,8 @@ namespace godot
 		bool checkWin{false};
 		int successes = 0;
 		float time = 0;
+
+		AnimationPlayer* animator;
 
 		void Explode();
 	};
