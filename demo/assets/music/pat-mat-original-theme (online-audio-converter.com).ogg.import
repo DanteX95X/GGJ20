@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pat-mat-original-theme (online-audio-converter.com).ogg-eb1650e543ae4849e498975effbbcc4d.oggstr"
+
+[deps]
+
+source_file="res://assets/music/pat-mat-original-theme (online-audio-converter.com).ogg"
+dest_files=[ "res://.import/pat-mat-original-theme (online-audio-converter.com).ogg-eb1650e543ae4849e498975effbbcc4d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
