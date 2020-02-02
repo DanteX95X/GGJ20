@@ -30,6 +30,8 @@ namespace godot
 		godot::register_property<PlayerController, int>("Nails", &PlayerController::remainingNails, 10);
 
 		godot::register_signal<PlayerController>("game_over", "win", GODOT_VARIANT_TYPE_BOOL);
+		godot::register_signal<PlayerController>("level_ready", Dictionary());
+		godot::register_signal<PlayerController>("simulation_started", Dictionary());
 	}
 
 	PlayerController::PlayerController()
@@ -44,18 +46,19 @@ namespace godot
 	{
 		Ref<Resource> resource = ResourceLoader::get_singleton()->load("res://scenes/actors/nail.tscn");
 		nail = resource;
-
-		SetNailsLabelValue();
 	}
 
 	void PlayerController::_ready()
 	{
+		SetNailsLabelValue();
+
 		Node* playButton = get_node("PlayButton");
 		BlockParent* blockParent = static_cast<BlockParent*>(get_node("BlockParent"));
 		playButton->connect("play_physics", blockParent, "EnableGravity");
 		playButton->connect("play_physics", this, "CheckWinCondition");
 		connect("game_over", playButton, "OnGameOver");
 		connect("game_over", this, "GameOver");
+		connect("level_ready", playButton, "OnLevelReady");
 
 		animator = static_cast<AnimationPlayer*>(get_node("HammerAnimation"));
 	}
@@ -69,7 +72,7 @@ namespace godot
 		if(checkWin)
 		{
 			time += delta;
-			if(time >= 1.5f)
+			if(time >= 5)
 			{
 				time = 0;
 				checkWin = false;
@@ -89,6 +92,7 @@ namespace godot
 				time = 0;
 				this->placingStarted = true;
 				this->Explode();
+				emit_signal("level_ready");
 			}
 		}
 
@@ -158,6 +162,8 @@ namespace godot
 
 	void PlayerController::CheckWinCondition()
 	{
+		emit_signal("simulation_started");
+
 		checkWin = true;
 		time = 0;
 

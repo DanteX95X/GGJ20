@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/actors/blocks/block_rect1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/actors/blocks/block_circle_big1.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/actors/blocks/block_square_big1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/actors/blocks/block_square2_width.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
@@ -21,35 +19,33 @@ Nails = 13
 [node name="BlockParent" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Block_rect" parent="BlockParent" instance=ExtResource( 5 )]
-position = Vector2( 430.908, 486.024 )
-
-[node name="Block_rect3" parent="BlockParent" instance=ExtResource( 5 )]
-position = Vector2( 638.011, 486.024 )
-
-[node name="Block_rect5" parent="BlockParent" instance=ExtResource( 5 )]
-position = Vector2( 690.013, 387.912 )
-rotation = 1.01299
-
-[node name="Block_1_square_big" parent="BlockParent" instance=ExtResource( 7 )]
-position = Vector2( 733.123, 462.377 )
-
-[node name="Block_circle_big" parent="BlockParent" instance=ExtResource( 6 )]
-position = Vector2( 430.908, 577.884 )
-
 [node name="Block_2_square_width" parent="BlockParent" instance=ExtResource( 8 )]
-position = Vector2( 654.01, 332.279 )
-rotation = -0.509015
+position = Vector2( 534.127, 269.211 )
+rotation = -0.394125
 
-[node name="Block_circle_big2" parent="BlockParent" instance=ExtResource( 6 )]
-position = Vector2( 743.232, 581.224 )
+[node name="Block_2_square_width2" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 624.341, 276.371 )
+rotation = 0.57486
 
-[node name="staticBlock" parent="." instance=ExtResource( 5 )]
-position = Vector2( 532.789, 486.024 )
+[node name="Block_2_square_width3" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 642.957, 343.674 )
+rotation = 2.01101
+
+[node name="Block_2_square_width4" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 508.351, 337.946 )
+rotation = 1.29181
+
+[node name="Block_2_square_width5" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 571.358, 396.657 )
+rotation = 0.0319667
+
+[node name="staticBlock" parent="." instance=ExtResource( 8 )]
+position = Vector2( 579.493, 205.033 )
+rotation = -1.58596
 isStaticBlock = true
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-position = Vector2( 532.429, 482.774 )
+position = Vector2( 580.311, 205.305 )
 node_a = NodePath("../staticBlock")
 node_b = NodePath("../backgroundRB")
 bias = 0.9
@@ -66,26 +62,15 @@ stream = ExtResource( 18 )
 [node name="Conditions" type="Node" parent="."]
 
 [node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 426.944, 490.262 )
-scale = Vector2( 1, 3 )
-ProperBlockName = "Block_rect"
+position = Vector2( 574.54, 397.727 )
+ProperBlockName = "Block_2_square_width"
+
+[node name="Condition2" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 640.411, 316.104 )
+ProperBlockName = "Block_2_square_width"
 
 [node name="Condition3" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 627.366, 493.778 )
-scale = Vector2( 1, 3 )
-ProperBlockName = "Block_rect"
-
-[node name="Condition4" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 742.774, 572.353 )
-scale = Vector2( 2, 2 )
-ProperBlockName = "Block_circle"
-
-[node name="Condition5" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 428.472, 578.492 )
-scale = Vector2( 2, 2 )
-ProperBlockName = "Block_circle"
-
-[node name="steering" parent="Conditions" instance=ExtResource( 19 )]
-position = Vector2( 689.981, 342.766 )
-scale = Vector2( 5, 3 )
+position = Vector2( 508.669, 314.672 )
 ProperBlockName = "Block_2_square_width"
+
+[node name="HammerAnimation" parent="." instance=ExtResource( 5 )]

@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
+[ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
+[ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://gdscripts/tutorials.gd" type="Script" id=7]
+[ext_resource path="res://scenes/actors/blocks/block_square2_width.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gdscripts/game_over_tutorial.gd" type="Script" id=9]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[node name="PlayerCtrl" type="Node2D"]
+script = ExtResource( 1 )
+Nails = 3
+
+[node name="backgroundRB" parent="." instance=ExtResource( 3 )]
+
+[node name="BlockParent" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Block_2_square_width2" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 579.493, 320.44 )
+rotation = -1.55452
+
+[node name="Block_2_square_width3" parent="BlockParent" instance=ExtResource( 8 )]
+position = Vector2( 578.266, 432.164 )
+rotation = -1.59018
+
+[node name="staticBlock" parent="." instance=ExtResource( 8 )]
+position = Vector2( 579.493, 205.033 )
+rotation = -1.58596
+isStaticBlock = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 580.311, 205.305 )
+node_a = NodePath("../staticBlock")
+node_b = NodePath("../backgroundRB")
+bias = 0.9
+softness = 1.0
+
+[node name="PlayButton" parent="." instance=ExtResource( 4 )]
+NextLevelPath = "res://scenes/Level1.tscn"
+
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="Conditions" type="Node" parent="."]
+
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
+position = Vector2( 577.404, 456.438 )
+ProperBlockName = "Block_2_square_width"
+
+[node name="HammerAnimation" parent="." instance=ExtResource( 5 )]
+
+[node name="Tutorials" type="Node" parent="."]
+
+[node name="1" type="Label" parent="Tutorials"]
+margin_left = 672.0
+margin_top = 16.0
+margin_right = 1268.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.00392157, 0.00392157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1. Try to remember the toy shape!"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+hideSignal = "level_ready"
+
+[node name="2" type="Label" parent="Tutorials"]
+visible = false
+margin_left = 672.0
+margin_top = 16.0
+margin_right = 1268.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.00392157, 0.00392157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "2. Do your best  to repair the toy.
+- LMB - drag pieces
+- Q,E - rotate dragged pieces
+- RMB - place a nail
+When you're ready, press play button!"
+autowrap = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+showSignal = "level_ready"
+hideSignal = "simulation_started"
+
+[node name="3" type="Label" parent="Tutorials"]
+visible = false
+margin_left = 672.0
+margin_top = 16.0
+margin_right = 1268.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.00392157, 0.00392157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "3. Let's see how well it holds together!"
+autowrap = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+showSignal = "simulation_started"
+hideSignal = "game_over"
+
+[node name="4a" type="Label" parent="Tutorials"]
+visible = false
+margin_left = 672.0
+margin_top = 16.0
+margin_right = 1268.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.00392157, 0.00392157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "4. Bad luck! 
+To try again, press Retry button."
+autowrap = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4b" type="Label" parent="Tutorials"]
+visible = false
+margin_left = 672.0
+margin_top = 16.0
+margin_right = 1268.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.00392157, 0.00392157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "4. Congratulations!
+Press Continue button to go to the next level.
+Have fun!"
+autowrap = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+expectedValue = true

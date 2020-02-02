@@ -11,9 +11,10 @@ namespace godot
 
 		godot::register_method("ButtonPressed", &PlayButton::ButtonPressed);
 		godot::register_method("OnGameOver", &PlayButton::OnGameOver);
+		godot::register_method("OnLevelReady", &PlayButton::OnLevelReady);
 
 		godot::register_signal<PlayButton>("play_physics", Dictionary());
-		godot::register_property<PlayButton, String>("NextLevelPath", &PlayButton::nextLevelPath, "Pls, ustaw mnie!");
+		godot::register_property<PlayButton, String>("NextLevelPath", &PlayButton::nextLevelPath, "res://scenes/Level0.tscn");
 		godot::register_property<PlayButton, Ref<Texture>>("HoverTexture", &PlayButton::hoverTexture, nullptr);
 		godot::register_property<PlayButton, Ref<Texture>>("NormalTexture", &PlayButton::normalTexture, nullptr);
 		godot::register_property<PlayButton, Ref<Texture>>("PressedTexture", &PlayButton::pressedTexture, nullptr);
@@ -34,6 +35,7 @@ namespace godot
 	void PlayButton::_ready()
 	{
 		this->connect("pressed", this, "ButtonPressed");
+		set_disabled(true);
 	}
 
 	void PlayButton::_process(float delta)
@@ -69,5 +71,10 @@ namespace godot
 			this->set_normal_texture(normalTexture);
 			this->set_pressed_texture(pressedTexture);
 		}
+	}
+
+	void PlayButton::OnLevelReady()
+	{
+		set_disabled(false);
 	}
 }

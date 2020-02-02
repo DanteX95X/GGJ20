@@ -1,0 +1,283 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/block_big1.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/graphics/block_circle_big1.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/block_rect1.png" type="Texture" id=5]
+[ext_resource path="res://gdscripts/play.gd" type="Script" id=6]
+[ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/graphics/block_square1.png" type="Texture" id=8]
+[ext_resource path="res://gdscripts/toggle_fullscreen.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 112.387, 82.8831 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+outline_size = 10
+outline_color = Color( 0.027451, 0.027451, 0.027451, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 119.949, 54.0184 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 110.141
+
+[node name="Node" type="Node"]
+
+[node name="backgroundRB" parent="." instance=ExtResource( 1 )]
+
+[node name="Play" type="RigidBody2D" parent="."]
+position = Vector2( 114.446, 49.0704 )
+collision_layer = 16
+collision_mask = 16
+gravity_scale = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play"]
+position = Vector2( 130.517, 81.8168 )
+shape = SubResource( 1 )
+
+[node name="Button" type="Button" parent="Play"]
+margin_right = 259.0
+margin_bottom = 172.0
+theme = SubResource( 3 )
+button_mask = 3
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://scenes/Level0.tscn"
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Play"]
+position = Vector2( 130.517, 81.8168 )
+node_a = NodePath("..")
+node_b = NodePath("../../backgroundRB")
+
+[node name="Label" type="Label" parent="Play"]
+margin_right = 259.0
+margin_bottom = 172.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Play"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stoper" type="RigidBody2D" parent="."]
+position = Vector2( 193.249, 259.353 )
+collision_layer = 16
+collision_mask = 16
+mode = 1
+gravity_scale = 0.5
+linear_damp = 2.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper"]
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Stoper"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="Credits" type="RigidBody2D" parent="."]
+position = Vector2( 425.516, 457.242 )
+collision_layer = 16
+collision_mask = 16
+gravity_scale = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Credits"]
+position = Vector2( 125.373, 87.8185 )
+shape = SubResource( 7 )
+
+[node name="Button" type="Button" parent="Credits"]
+margin_right = 259.0
+margin_bottom = 172.0
+theme = SubResource( 3 )
+button_mask = 3
+icon = ExtResource( 5 )
+flat = true
+expand_icon = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://scenes/credits.tscn"
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Credits"]
+position = Vector2( 205.368, 110.792 )
+node_a = NodePath("..")
+node_b = NodePath("../../backgroundRB")
+
+[node name="Label" type="Label" parent="Credits"]
+margin_right = 259.0
+margin_bottom = 172.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Credits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stoper2" type="RigidBody2D" parent="."]
+position = Vector2( 609.569, 653.165 )
+collision_layer = 16
+collision_mask = 16
+mode = 1
+gravity_scale = 0.5
+linear_damp = 2.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper2"]
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Stoper2"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="Fullscreen" type="RigidBody2D" parent="."]
+position = Vector2( 114.446, 307.805 )
+collision_layer = 16
+collision_mask = 16
+gravity_scale = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fullscreen"]
+position = Vector2( 125.373, 87.8185 )
+shape = SubResource( 7 )
+
+[node name="Button" type="Button" parent="Fullscreen"]
+margin_right = 259.0
+margin_bottom = 172.0
+theme = SubResource( 3 )
+button_mask = 3
+icon = ExtResource( 5 )
+flat = true
+expand_icon = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Fullscreen"]
+position = Vector2( 205.368, 110.792 )
+node_a = NodePath("..")
+node_b = NodePath("../../backgroundRB")
+
+[node name="Label" type="Label" parent="Fullscreen"]
+margin_right = 259.0
+margin_bottom = 172.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Fullscreen"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stoper4" type="RigidBody2D" parent="."]
+position = Vector2( 239.819, 503.728 )
+collision_layer = 16
+collision_mask = 16
+mode = 1
+gravity_scale = 0.5
+linear_damp = 2.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper4"]
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Stoper4"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="Quit" type="RigidBody2D" parent="."]
+position = Vector2( 788.734, 457.242 )
+collision_layer = 16
+collision_mask = 16
+gravity_scale = 5.0
+linear_damp = 10.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
+position = Vector2( 116.034, 57.4289 )
+shape = SubResource( 6 )
+
+[node name="Button" type="Button" parent="Quit"]
+margin_top = -55.0
+margin_right = 230.0
+margin_bottom = 172.0
+theme = SubResource( 3 )
+button_mask = 3
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://scenes/quit.tscn"
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Quit"]
+position = Vector2( 153.08, 97.1593 )
+node_a = NodePath("..")
+node_b = NodePath("../../backgroundRB")
+
+[node name="Label" type="Label" parent="Quit"]
+margin_left = 29.7825
+margin_top = -25.9602
+margin_right = 199.783
+margin_bottom = 146.04
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stoper3" type="RigidBody2D" parent="."]
+position = Vector2( 822.612, 629.415 )
+collision_layer = 16
+collision_mask = 16
+mode = 1
+gravity_scale = 0.5
+linear_damp = 2.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper3"]
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Stoper3"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="HammerAnimation" parent="." instance=ExtResource( 7 )]
+[connection signal="pressed" from="Play/Button" to="Play/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Credits/Button" to="Credits/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Fullscreen/Button" to="Fullscreen/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Quit/Button" to="Quit/Button" method="_on_Button_pressed"]
