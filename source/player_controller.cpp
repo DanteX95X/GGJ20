@@ -152,13 +152,21 @@ namespace godot
 
 	void PlayerController::LevelSuccess()
 	{
-		static_cast<AudioStreamPlayer*>(this->get_node("kidsSound"))->play();
+		auto playButton = this->get_node("PlayButton");
+		static_cast<AudioStreamPlayer*>(playButton->get_node("kidsSound"))->play();
 	}
 
 	void PlayerController::LevelFailed()
 	{
-		static_cast<AudioStreamPlayer*>(this->get_node("crowdSound"))->play();
+		auto playButton = this->get_node("PlayButton");
+		static_cast<AudioStreamPlayer*>(playButton->get_node("crowdSound"))->play();
     }
+
+	void PlayerController::PlayDrums()
+	{
+		auto playButton = this->get_node("PlayButton");
+		static_cast<AudioStreamPlayer*>(playButton->get_node("drumrollSound"))->play();
+	}
 
 	void PlayerController::CheckWinCondition()
 	{

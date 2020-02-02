@@ -31,6 +31,7 @@ namespace godot
 
 		void LevelSuccess();
 		void LevelFailed();
+		void PlayDrums();
 
 	private:
 		Ref<PackedScene> nail{};
