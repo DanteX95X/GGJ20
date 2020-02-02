@@ -170,6 +170,7 @@ namespace godot
 
 	void PlayerController::CheckWinCondition()
 	{
+		PlayDrums();
 		emit_signal("simulation_started");
 
 		checkWin = true;
