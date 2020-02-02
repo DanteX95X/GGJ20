@@ -136,7 +136,7 @@ namespace godot
 
 	void PlayerController::Explode()
 	{
-		godot::Godot::print("Explosion!");
+		BreakToy();
 		auto children = this->get_node("BlockParent")->get_children();
 		auto background_position = static_cast<Node2D*>(this->get_node("backgroundRB"))->get_position();
 
@@ -166,6 +166,12 @@ namespace godot
 	{
 		auto playButton = this->get_node("PlayButton");
 		static_cast<AudioStreamPlayer*>(playButton->get_node("drumrollSound"))->play();
+	}
+
+	void PlayerController::BreakToy()
+	{
+		auto playButton = this->get_node("PlayButton");
+		static_cast<AudioStreamPlayer*>(playButton->get_node("brokeSound"))->play();
 	}
 
 	void PlayerController::CheckWinCondition()
