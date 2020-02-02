@@ -40,10 +40,9 @@ NormalTexture = ExtResource( 11 )
 PressedTexture = ExtResource( 10 )
 
 [node name="NailsLabel" type="Label" parent="."]
-margin_left = -1150.67
-margin_top = -593.99
-margin_right = -711.673
-margin_bottom = -444.99
+margin_top = -570.023
+margin_right = 438.997
+margin_bottom = -421.023
 custom_fonts/font = SubResource( 1 )
 text = "Nails: "
 __meta__ = {
@@ -51,10 +50,10 @@ __meta__ = {
 }
 
 [node name="NailsValue" type="Label" parent="."]
-margin_left = -936.682
-margin_top = -593.99
-margin_right = -497.682
-margin_bottom = -444.99
+margin_left = 213.988
+margin_top = -570.023
+margin_right = 652.988
+margin_bottom = -421.023
 custom_fonts/font = SubResource( 1 )
 text = "10"
 __meta__ = {

@@ -25,6 +25,7 @@ namespace godot
 	private:
 		void ButtonPressed();
 		void OnGameOver(bool win);
+		void OnLevelReady();
 
 		String nextLevelPath{};
 		bool didPlayPhysics = false;

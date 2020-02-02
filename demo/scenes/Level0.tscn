@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/GraphicalInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/actors/blocks/block_square2_width.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
@@ -39,6 +40,7 @@ bias = 0.9
 softness = 1.0
 
 [node name="PlayButton" parent="." instance=ExtResource( 4 )]
+NextLevelPath = "res://scenes/Level1.tscn"
 
 [node name="kidsSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
@@ -51,3 +53,5 @@ stream = ExtResource( 18 )
 [node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
 position = Vector2( 577.404, 456.438 )
 ProperBlockName = "Block_2_square_width"
+
+[node name="HammerAnimation" parent="." instance=ExtResource( 5 )]

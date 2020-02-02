@@ -25,10 +25,10 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 20, 20 )
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 100.0
 
 [node name="Node" type="Node"]
@@ -56,7 +56,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-path = "res://scenes/PlayerCtrl.tscn"
+path = "res://scenes/Level0.tscn"
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Play"]
 position = Vector2( 130.517, 81.8168 )
@@ -127,7 +127,7 @@ linear_damp = 2.0
 angular_damp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Stoper2" type="RigidBody2D" parent="."]
 position = Vector2( 806.212, 639.17 )
@@ -139,7 +139,7 @@ linear_damp = 2.0
 angular_damp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper2"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Stoper3" type="RigidBody2D" parent="."]
 position = Vector2( 517.073, 668.05 )
@@ -151,7 +151,7 @@ linear_damp = 2.0
 angular_damp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stoper3"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Quit" type="RigidBody2D" parent="."]
 position = Vector2( 788.734, 457.242 )
@@ -161,7 +161,7 @@ gravity_scale = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
 position = Vector2( 120.59, 60.1568 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Button" type="Button" parent="Quit"]
 margin_top = -55.0

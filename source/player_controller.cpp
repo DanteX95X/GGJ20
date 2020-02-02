@@ -30,6 +30,7 @@ namespace godot
 		godot::register_property<PlayerController, int>("Nails", &PlayerController::remainingNails, 10);
 
 		godot::register_signal<PlayerController>("game_over", "win", GODOT_VARIANT_TYPE_BOOL);
+		godot::register_signal<PlayerController>("level_ready", Dictionary());
 	}
 
 	PlayerController::PlayerController()
@@ -56,6 +57,7 @@ namespace godot
 		playButton->connect("play_physics", this, "CheckWinCondition");
 		connect("game_over", playButton, "OnGameOver");
 		connect("game_over", this, "GameOver");
+		connect("level_ready", playButton, "OnLevelReady");
 
 		animator = static_cast<AnimationPlayer*>(get_node("HammerAnimation"));
 	}
@@ -89,6 +91,7 @@ namespace godot
 				time = 0;
 				this->placingStarted = true;
 				this->Explode();
+				emit_signal("level_ready");
 			}
 		}
 
