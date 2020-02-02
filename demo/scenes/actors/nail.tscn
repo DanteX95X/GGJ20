@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/nailhead.png" type="Texture" id=1]
 [ext_resource path="res://native_scripts/Nail.gdns" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -32,6 +32,7 @@ scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Body/CollisionShape2D"]
+scale = Vector2( 0.25, 0.25 )
 z_index = 1
 texture = ExtResource( 1 )
 

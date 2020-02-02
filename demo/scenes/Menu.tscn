@@ -30,10 +30,10 @@ font_data = ExtResource( 3 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 20, 20 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 119.949, 54.0184 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 110.141
 
 [node name="Node" type="Node"]
@@ -106,7 +106,7 @@ gravity_scale = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Credits"]
 position = Vector2( 125.373, 87.8185 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Button" type="Button" parent="Credits"]
 margin_right = 259.0
@@ -164,7 +164,7 @@ gravity_scale = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fullscreen"]
 position = Vector2( 125.373, 87.8185 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Button" type="Button" parent="Fullscreen"]
 margin_right = 259.0
@@ -223,7 +223,7 @@ angular_damp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
 position = Vector2( 116.034, 57.4289 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Button" type="Button" parent="Quit"]
 margin_top = -55.0
