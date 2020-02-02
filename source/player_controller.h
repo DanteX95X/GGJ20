@@ -24,6 +24,8 @@ namespace godot
 		void CheckWinCondition();
 		void SuccessChanged(bool value);
 
+		void GameOver(bool win);
+
 		static int64_t zOrder;
 
 	private:
@@ -35,6 +37,7 @@ namespace godot
 		bool placingStarted{false};
 		bool checkWin{false};
 		int successes = 0;
+		float time = 0;
 
 		void Explode();
 	};

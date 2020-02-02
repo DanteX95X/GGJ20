@@ -8,6 +8,7 @@
 #include <SceneTree.hpp>
 #include "block_parent.h"
 #include "win_condition.h"
+#include <Node.hpp>
 
 namespace godot
 {
@@ -20,8 +21,11 @@ namespace godot
 
 		godot::register_method("CheckWinCondition", &PlayerController::CheckWinCondition);
 		godot::register_method("SuccessChanged", &PlayerController::SuccessChanged);
+		godot::register_method("GameOver", &PlayerController::GameOver);
 
 		godot::register_property<PlayerController, int>("Nails", &PlayerController::remainingNails, 10);
+
+		godot::register_signal<PlayerController>("game_over", "win", GODOT_VARIANT_TYPE_BOOL);
 	}
 
 	PlayerController::PlayerController()
@@ -44,6 +48,7 @@ namespace godot
 		BlockParent* blockParent = static_cast<BlockParent*>(get_node("BlockParent"));
 		playButton->connect("play_physics", blockParent, "EnableGravity");
 		playButton->connect("play_physics", this, "CheckWinCondition");
+		connect("game_over", this, "GameOver");
 	}
 
 	void PlayerController::_process(float delta)
@@ -54,17 +59,14 @@ namespace godot
 
 		if(checkWin)
 		{
-			checkWin = false;
-
-			int required = get_node("Conditions")->get_child_count();
-
-			if(successes == required)
+			time += delta;
+			if(time >= 1.5f)
 			{
-				Godot::print("win");
-			}
-			else
-			{
-				Godot::print("lose");
+				checkWin = false;
+
+				int required = get_node("Conditions")->get_child_count();
+
+				emit_signal("game_over", successes == required);
 			}
 		}
 
@@ -129,5 +131,13 @@ namespace godot
 			Godot::print("-1");
 			--successes;
 		}
+	}
+
+	void PlayerController::GameOver(bool win)
+	{
+		if(win)
+			Godot::print("win");
+		else
+			Godot::print("raptot zjebałeś");
 	}
 }

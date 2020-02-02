@@ -13,8 +13,8 @@ namespace godot
 		godot::register_property<WinCondition, String>("ProperBlockName", &WinCondition::properBlockName, "Kurwa");
 
 		Dictionary args;
-		args[Variant("value")] = Variant(Variant::BOOL);
-		godot::register_signal<WinCondition>("success_changed", args);
+		args[godot::Variant("success")] = godot::Variant(godot::Variant::BOOL);
+		godot::register_signal<WinCondition>("success_changed", "success", GODOT_VARIANT_TYPE_BOOL);
 	}
 
 	WinCondition::WinCondition()
@@ -42,7 +42,7 @@ namespace godot
 		if(body->get_name().find(properBlockName) != -1)
 		{
 			Godot::print("entered");
-			emit_signal("success_changed", this, true);
+			emit_signal("success_changed", true);
 		}
 	}
 
@@ -51,7 +51,7 @@ namespace godot
 		if(body->get_name().find(properBlockName != -1))
 		{
 			Godot::print("exited");
-			emit_signal("success_changed", this, false);
+			emit_signal("success_changed", false);
 		}
 	}
 }
