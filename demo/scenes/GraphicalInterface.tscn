@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/reload_button_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/play_button_hover.png" type="Texture" id=6]
-[ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/fonts/ChockABlockNf-gplE.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=8]
 [ext_resource path="res://assets/graphics/reload_button_pressed.png" type="Texture" id=9]
 [ext_resource path="res://assets/graphics/continue_button_pressed.png" type="Texture" id=10]
@@ -24,7 +24,7 @@
 [ext_resource path="res://scenes/actors/splinters.tscn" type="PackedScene" id=22]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 40
 outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -61,9 +61,9 @@ __meta__ = {
 }
 
 [node name="NailsValue" type="Label" parent="."]
-margin_left = 213.988
+margin_left = 236.843
 margin_top = -570.023
-margin_right = 652.988
+margin_right = 675.843
 margin_bottom = -421.023
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
