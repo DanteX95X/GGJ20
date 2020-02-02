@@ -20,16 +20,16 @@ texture = ExtResource( 1 )
 position = Vector2( -6.76001, -77.375 )
 shape = SubResource( 1 )
 
-[node name="WallNode" type="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="WallNode" parent="." instance=ExtResource( 2 )]
 position = Vector2( 127.144, 462.526 )
 
-[node name="WallNode4" type="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="WallNode4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 127.144, -434.098 )
 
-[node name="WallNode2" type="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="WallNode2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 857.067, -192.495 )
 rotation = 1.56858
 
-[node name="WallNode3" type="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="WallNode3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -602.481, -192.495 )
 rotation = 1.58169

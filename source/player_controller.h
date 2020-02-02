@@ -21,6 +21,11 @@ namespace godot
 		void _ready();
 		void _process(float delta);
 
+		void CheckWinCondition();
+		void SuccessChanged(bool value);
+
+		void GameOver(bool win);
+
 		static int64_t zOrder;
 
 	private:
@@ -30,6 +35,9 @@ namespace godot
 		bool exploded{false};
 		float timeAfterExplosion{0.0f};
 		bool placingStarted{false};
+		bool checkWin{false};
+		int successes = 0;
+		float time = 0;
 
 		void Explode();
 	};
