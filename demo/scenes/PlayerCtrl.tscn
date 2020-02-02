@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://native_scripts/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/BlockParent.gdns" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=14]
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -99,3 +101,12 @@ margin_right = 654.318
 margin_bottom = 147.01
 custom_fonts/font = SubResource( 1 )
 text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )

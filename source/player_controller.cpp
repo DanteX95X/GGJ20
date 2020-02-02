@@ -2,6 +2,7 @@
 #include "Input.hpp"
 #include "block.h"
 #include <ResourceLoader.hpp>
+#include <AudioStreamPlayer.hpp>
 #include <Input.hpp>
 #include <Label.hpp>
 #include <Viewport.hpp>
@@ -75,7 +76,6 @@ namespace godot
 		Label* nailsValue = static_cast<Label*>(this->get_node("NailsValue"));
 		if(nailsValue != nullptr)
 		{
-			godot::Godot::print("ssij godota");
 			nailsValue->set_text(std::to_string(this->remainingNails).c_str());
 		}
 	}
@@ -94,5 +94,15 @@ namespace godot
 				block->ExplosionImpact(background_position);
 			}
 		}
+	}
+
+	void PlayerController::LevelSuccess()
+	{
+		static_cast<AudioStreamPlayer*>(this->get_node("kidsSound"))->play();
+	}
+
+	void PlayerController::LevelFailed()
+	{
+		static_cast<AudioStreamPlayer*>(this->get_node("crowdSound"))->play();
 	}
 }
