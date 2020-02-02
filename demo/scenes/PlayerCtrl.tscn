@@ -16,8 +16,10 @@
 [ext_resource path="res://assets/graphics/continue_button_normal.png" type="Texture" id=14]
 [ext_resource path="res://assets/graphics/continue_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/Helvetica 400.ttf" type="DynamicFontData" id=16]
-[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=18]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/actors/blockVerifier.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/graphics/play_button_disabled.png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -111,8 +113,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
 [node name="Conditions" type="Node" parent="."]
 
-[node name="Condition" parent="Conditions" instance=ExtResource( 17 )]
+[node name="Condition" parent="Conditions" instance=ExtResource( 19 )]
 position = Vector2( 504.3, 216 )
 ProperBlockName = "Block2"
