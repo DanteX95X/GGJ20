@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://assets/graphics/back_button_normal.png" type="Texture" id=15]
 [ext_resource path="res://assets/graphics/back_button_hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/graphics/back_button_pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/sounds/kids.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/drumrollshort.ogg" type="AudioStream" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -91,4 +94,13 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="crowdSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[node name="drumrollSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
+[node name="kidsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
