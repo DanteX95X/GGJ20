@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://native_scripts/ui/ReloadButton.gdns" type="Script" id=1]
 [ext_resource path="res://native_scripts/ui/PlayButton.gdns" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/sounds/crowd.ogg" type="AudioStream" id=19]
 [ext_resource path="res://assets/sounds/drumrollshort.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/sounds/woodbroken.ogg" type="AudioStream" id=21]
+[ext_resource path="res://scenes/actors/splinters.tscn" type="PackedScene" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -43,7 +44,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-NextLevelPath = null
 HoverTexture = ExtResource( 4 )
 NormalTexture = ExtResource( 11 )
 PressedTexture = ExtResource( 10 )
@@ -109,4 +109,7 @@ stream = ExtResource( 20 )
 
 [node name="kidsSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+
+[node name="ExplosionParticles" parent="." instance=ExtResource( 22 )]
+position = Vector2( 652.988, -251.056 )
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
