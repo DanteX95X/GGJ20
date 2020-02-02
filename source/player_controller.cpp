@@ -7,6 +7,7 @@
 #include <Area2D.hpp>
 #include <SceneTree.hpp>
 #include "block_parent.h"
+#include "win_condition.h"
 
 namespace godot
 {
@@ -16,6 +17,9 @@ namespace godot
 	{
 		godot::register_method("_ready", &PlayerController::_ready);
 		godot::register_method("_process", &PlayerController::_process);
+
+		godot::register_method("CheckWinCondition", &PlayerController::CheckWinCondition);
+		godot::register_method("SuccessChanged", &PlayerController::SuccessChanged);
 
 		godot::register_property<PlayerController, int>("Nails", &PlayerController::remainingNails, 10);
 	}
@@ -39,6 +43,7 @@ namespace godot
 		Node* playButton = get_node("PlayButton");
 		BlockParent* blockParent = static_cast<BlockParent*>(get_node("BlockParent"));
 		playButton->connect("play_physics", blockParent, "EnableGravity");
+		playButton->connect("play_physics", this, "CheckWinCondition");
 	}
 
 	void PlayerController::_process(float delta)
@@ -46,6 +51,22 @@ namespace godot
 		Vector2 mousePosition = this->get_local_mouse_position();
 
 		const auto& input = Input::get_singleton();
+
+		if(checkWin)
+		{
+			checkWin = false;
+
+			int required = get_node("Conditions")->get_child_count();
+
+			if(successes == required)
+			{
+				Godot::print("win");
+			}
+			else
+			{
+				Godot::print("lose");
+			}
+		}
 
 		if(!this->placingStarted && input->is_action_just_released("start_level"))
 		{
@@ -78,6 +99,35 @@ namespace godot
 			{
 				block->ExplosionImpact(background_position);
 			}
+		}
+	}
+
+	void PlayerController::CheckWinCondition()
+	{
+		checkWin = true;
+
+		Node* node = get_node("Conditions");
+
+		for(int i = 0; i < node->get_child_count(); ++i)
+		{
+			WinCondition* condition = static_cast<WinCondition*>(node->get_child(i));
+			condition->connect("body_entered", condition, "OnBodyEntered");
+			condition->connect("body_exited", condition, "OnBodyExited");
+			condition->connect("success_changed", this, "SuccessChanged");
+		}
+	}
+
+	void PlayerController::SuccessChanged(bool value)
+	{
+		if(value)
+		{
+			Godot::print("+1");
+			++successes;
+		}
+		else
+		{
+			Godot::print("-1");
+			--successes;
 		}
 	}
 }

@@ -19,6 +19,7 @@ gravity_scale = 5.0
 linear_damp = 0.2
 angular_damp = 0.2
 script = ExtResource( 1 )
+isStaticBlock = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.2, 0.2 )

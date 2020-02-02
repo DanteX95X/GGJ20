@@ -1331,3 +1331,5 @@ source/ui/play_button.h
 source/ui/play_button.cpp
 source/./block_verifier.h
 source/./block_verifier.cpp
+source/./win_condition.h
+source/./win_condition.cpp
