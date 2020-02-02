@@ -66,10 +66,10 @@ namespace godot
 			if(Input::get_singleton()->is_action_pressed("rotate_left"))
 			{
 				Godot::print("Rotate left");
-				set_global_rotation_degrees(get_global_rotation_degrees() - 3);
+				set_global_rotation_degrees(get_global_rotation_degrees() - 75 * delta);
 			}
 			else if(Input::get_singleton()->is_action_pressed("rotate_right"))
-				set_global_rotation_degrees(get_global_rotation_degrees() + 3);
+				set_global_rotation_degrees(get_global_rotation_degrees() + 75* delta);
 		}
 	}
 
