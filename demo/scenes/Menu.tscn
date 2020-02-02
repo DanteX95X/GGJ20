@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/actors/enviro.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/block_big1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/actors/animations.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/graphics/block_square1.png" type="Texture" id=8]
 [ext_resource path="res://gdscripts/toggle_fullscreen.gd" type="Script" id=9]
+[ext_resource path="res://scenes/actors/TitleAnimation.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 112.387, 82.8831 )
@@ -277,6 +278,8 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
 
 [node name="HammerAnimation" parent="." instance=ExtResource( 7 )]
+
+[node name="Title" parent="." instance=ExtResource( 11 )]
 [connection signal="pressed" from="Play/Button" to="Play/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Credits/Button" to="Credits/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Fullscreen/Button" to="Fullscreen/Button" method="_on_Button_pressed"]
