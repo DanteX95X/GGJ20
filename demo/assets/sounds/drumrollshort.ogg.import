@@ -11,5 +11,5 @@ dest_files=[ "res://.import/drumrollshort.ogg-943e4519a07e4ca98d4d2735e653e780.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
