@@ -11,6 +11,8 @@
 #include "win_condition.h"
 #include <Node.hpp>
 
+#include <string>
+
 namespace godot
 {
 	int64_t PlayerController::zOrder = 0;
@@ -96,11 +98,14 @@ namespace godot
 
 	void PlayerController::SetNailsLabelValue()
 	{
-		Label* nailsValue = static_cast<Label*>(this->get_node("NailsValue"));
-		if(nailsValue != nullptr)
+		Node* playButton = static_cast<Node*>(this->get_node("PlayButton"));
+		if (playButton != nullptr)
 		{
-			godot::Godot::print("ssij godota");
-			nailsValue->set_text(std::to_string(this->remainingNails).c_str());
+			Label* nailsValue = static_cast<Label*>(playButton->get_node("NailsValue"));
+			if(nailsValue != nullptr)
+			{
+				nailsValue->set_text(std::to_string(this->remainingNails).c_str());
+			}
 		}
 	}
 

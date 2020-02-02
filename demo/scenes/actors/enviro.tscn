@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80, 30 )
+extents = Vector2( 700, 500 )
 
 [node name="backgroundRB" type="RigidBody2D"]
 position = Vector2( 511.06, 347.42 )
@@ -18,6 +18,7 @@ position = Vector2( 127.212, 29.8875 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -6.76001, -77.375 )
 shape = SubResource( 1 )
 
